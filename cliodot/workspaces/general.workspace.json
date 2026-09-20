@@ -1,0 +1,25 @@
+{
+  "kind": "cliodot.workspace",
+  "version": 1,
+  "exported_at": "2026-09-20T13:34:48.770Z",
+  "source": {
+    "tenant_id": "34416d05-bdae-45ae-8f4c-a6e3eea4e2ec",
+    "project_id": "6aaf32dbd62548ca33f6befc",
+    "project_name": "General"
+  },
+  "project": {
+    "source_id": "6aaf32dbd62548ca33f6befc",
+    "name": "General",
+    "description": "Default project for work that is not assigned to a specific project.",
+    "settings": {
+      "default_environment": "development",
+      "allow_environment_switch": true
+    },
+    "environment_keys": []
+  },
+  "connectors": [],
+  "installations": [],
+  "workflows": [],
+  "transformers": [],
+  "gateways": []
+}
