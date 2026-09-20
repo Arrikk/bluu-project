@@ -1,7 +1,7 @@
 {
   "kind": "cliodot.workspace",
   "version": 1,
-  "exported_at": "2026-09-20T16:05:36.251Z",
+  "exported_at": "2026-09-20T22:38:44.586Z",
   "source": {
     "tenant_id": "34416d05-bdae-45ae-8f4c-a6e3eea4e2ec",
     "project_id": "69d663cefef44ab5d72c7fc4",
@@ -247358,6 +247358,2483 @@
           }
         }
       ]
+    }
+  ],
+  "apps": [
+    {
+      "kind": "webhook",
+      "source_id": "wh_app_6a69fb7bf55f83b38e8ed4f5",
+      "name": "Payment Hooks",
+      "slug": "payment-hooks",
+      "description": "Inbound provider",
+      "status": "active",
+      "definition": {
+        "project_id": "69d663cefef44ab5d72c7fc4",
+        "name": "Payment Hooks",
+        "slug": "payment-hooks",
+        "description": "Inbound provider",
+        "status": "active",
+        "__v": 0
+      },
+      "catalog": {
+        "endpoints": [
+          {
+            "name": "ClioBlu",
+            "slug": "clioblu",
+            "verify_template_id": "none",
+            "access": {
+              "rate_limit_rpm": 120,
+              "max_concurrent": 20,
+              "max_body_bytes": 1048576,
+              "allowed_methods": [
+                "POST"
+              ],
+              "ip_allowlist": [],
+              "host_allowlist": [],
+              "user_agent_allowlist": [],
+              "user_agent_denylist": []
+            }
+          },
+          {
+            "name": "Stripe Payment",
+            "slug": "stripe-payment",
+            "verify_template_id": "none",
+            "access": {
+              "rate_limit_rpm": 120,
+              "max_concurrent": 20,
+              "max_body_bytes": 1048576,
+              "allowed_methods": [
+                "POST"
+              ],
+              "ip_allowlist": [],
+              "host_allowlist": [],
+              "user_agent_allowlist": [],
+              "user_agent_denylist": []
+            }
+          }
+        ]
+      }
+    },
+    {
+      "kind": "webhook",
+      "source_id": "wh_app_6a989f4698516da91434fb20",
+      "name": "Bluu Webhooks",
+      "slug": "bluu-webhooks",
+      "status": "active",
+      "definition": {
+        "name": "Bluu Webhooks",
+        "slug": "bluu-webhooks",
+        "status": "active",
+        "__v": 0,
+        "project_id": "69d663cefef44ab5d72c7fc4"
+      },
+      "catalog": {
+        "endpoints": [
+          {
+            "name": "Create Account",
+            "slug": "create-account",
+            "verify_template_id": "none",
+            "access": {
+              "rate_limit_rpm": 120,
+              "max_concurrent": 20,
+              "max_body_bytes": 1048576,
+              "allowed_methods": [
+                "POST"
+              ],
+              "ip_allowlist": [],
+              "host_allowlist": [],
+              "user_agent_allowlist": [],
+              "user_agent_denylist": []
+            }
+          }
+        ]
+      }
+    },
+    {
+      "kind": "auth",
+      "source_id": "auth_app_6a688c2b4214b3bbae767cf9",
+      "name": "Haun",
+      "slug": "haun",
+      "description": "Just Haun manu alweio eri",
+      "status": "active",
+      "definition": {
+        "name": "Haun",
+        "slug": "haun",
+        "description": "Just Haun manu alweio eri",
+        "status": "active",
+        "totp_policy": {
+          "digits": 6,
+          "period": 30,
+          "algorithm": "sha1",
+          "window": 1,
+          "issuer": "Haun",
+          "_id": {
+            "buffer": {
+              "0": 106,
+              "1": 104,
+              "2": 140,
+              "3": 43,
+              "4": 66,
+              "5": 20,
+              "6": 179,
+              "7": 187,
+              "8": 174,
+              "9": 118,
+              "10": 124,
+              "11": 250
+            }
+          }
+        },
+        "security_policy": {
+          "max_attempts": 5,
+          "lockout_minutes": 15,
+          "enroll_ttl_minutes": 15,
+          "recovery_code_count": 10,
+          "_id": {
+            "buffer": {
+              "0": 106,
+              "1": 104,
+              "2": 140,
+              "3": 43,
+              "4": 66,
+              "5": 20,
+              "6": 179,
+              "7": 187,
+              "8": 174,
+              "9": 118,
+              "10": 124,
+              "11": 251
+            }
+          }
+        },
+        "enabled_methods": [
+          "totp"
+        ],
+        "__v": 0,
+        "project_id": "69d663cefef44ab5d72c7fc4"
+      }
+    },
+    {
+      "kind": "auth",
+      "source_id": "auth_app_6a6df73e9b87bf5bda6885a3",
+      "name": "BluuPay",
+      "slug": "bluupay",
+      "status": "active",
+      "definition": {
+        "name": "BluuPay",
+        "slug": "bluupay",
+        "status": "active",
+        "totp_policy": {
+          "digits": 6,
+          "period": 30,
+          "algorithm": "sha1",
+          "window": 1,
+          "issuer": "BluuPay",
+          "_id": {
+            "buffer": {
+              "0": 106,
+              "1": 152,
+              "2": 119,
+              "3": 1,
+              "4": 211,
+              "5": 4,
+              "6": 80,
+              "7": 169,
+              "8": 4,
+              "9": 182,
+              "10": 57,
+              "11": 232
+            }
+          }
+        },
+        "security_policy": {
+          "max_attempts": 5,
+          "lockout_minutes": 15,
+          "enroll_ttl_minutes": 15,
+          "recovery_code_count": 10,
+          "_id": {
+            "buffer": {
+              "0": 106,
+              "1": 152,
+              "2": 119,
+              "3": 1,
+              "4": 211,
+              "5": 4,
+              "6": 80,
+              "7": 169,
+              "8": 4,
+              "9": 182,
+              "10": 57,
+              "11": 229
+            }
+          }
+        },
+        "enabled_methods": [
+          "totp",
+          "email_otp",
+          "magic_link"
+        ],
+        "__v": 0,
+        "email_otp_content": {
+          "message_template_slug": "email.code"
+        },
+        "email_otp_policy": {
+          "code_digits": 6,
+          "ttl_seconds": 600,
+          "resend_mode": "queue",
+          "resend_interval_seconds": 60,
+          "resend_queue_max": 10,
+          "_id": {
+            "buffer": {
+              "0": 106,
+              "1": 131,
+              "2": 14,
+              "3": 97,
+              "4": 168,
+              "5": 90,
+              "6": 101,
+              "7": 146,
+              "8": 131,
+              "9": 87,
+              "10": 50,
+              "11": 210
+            }
+          }
+        },
+        "email_otp_delivery": {
+          "delivery_template_id": "auth_dlv_tpl_6a50230419389ada13fc9d40",
+          "installation_id": "6a954f5b14215eec803a1d20",
+          "input_mappings": {
+            "to": "{{delivery.to}}",
+            "subject": "{{delivery.subject}}",
+            "text": "{{delivery.message}}",
+            "html": "{{delivery.body_html}}",
+            "cc": "{{delivery.cc}}",
+            "bcc": "{{delivery.bcc}}",
+            "reply_to": "{{meta.reply_to}}",
+            "attachments": "{{delivery.attachments}}"
+          }
+        },
+        "magic_link_content": {
+          "message_template_slug": "email.code"
+        },
+        "magic_link_delivery": {
+          "delivery_template_id": "auth_dlv_tpl_6a50230419389ada13fc9d40",
+          "installation_id": "6a830e58a85a6592835732bd",
+          "input_mappings": {
+            "to": "{{delivery.to}}",
+            "subject": "{{delivery.subject}}",
+            "text": "{{delivery.message}}",
+            "html": "{{delivery.body_html}}",
+            "cc": "{{delivery.cc}}",
+            "bcc": "{{delivery.bcc}}",
+            "reply_to": "{{meta.reply_to}}",
+            "attachments": "{{delivery.attachments}}"
+          }
+        },
+        "magic_link_policy": {
+          "ttl_seconds": 900,
+          "resend_interval_seconds": 60,
+          "max_active_links": 3,
+          "max_attempts": 5,
+          "verification_url_base": " http://localhost:5173/magic-link",
+          "success_redirect_url": " http://localhost:5173",
+          "failure_redirect_url": " http://localhost:5173",
+          "_id": {
+            "buffer": {
+              "0": 106,
+              "1": 131,
+              "2": 18,
+              "3": 196,
+              "4": 168,
+              "5": 90,
+              "6": 101,
+              "7": 146,
+              "8": 131,
+              "9": 87,
+              "10": 51,
+              "11": 86
+            }
+          }
+        },
+        "project_id": "69d663cefef44ab5d72c7fc4"
+      }
+    },
+    {
+      "kind": "auth",
+      "source_id": "auth_app_6a74c30f9e37c37e4bb8005e",
+      "name": "Authentication",
+      "slug": "authentication",
+      "status": "active",
+      "definition": {
+        "name": "Authentication",
+        "slug": "authentication",
+        "status": "active",
+        "totp_policy": {
+          "digits": 6,
+          "period": 30,
+          "algorithm": "sha1",
+          "window": 1,
+          "issuer": "Authentication",
+          "_id": {
+            "buffer": {
+              "0": 106,
+              "1": 116,
+              "2": 195,
+              "3": 15,
+              "4": 158,
+              "5": 55,
+              "6": 195,
+              "7": 126,
+              "8": 75,
+              "9": 184,
+              "10": 0,
+              "11": 95
+            }
+          }
+        },
+        "security_policy": {
+          "max_attempts": 5,
+          "lockout_minutes": 15,
+          "enroll_ttl_minutes": 15,
+          "recovery_code_count": 10,
+          "_id": {
+            "buffer": {
+              "0": 106,
+              "1": 116,
+              "2": 195,
+              "3": 15,
+              "4": 158,
+              "5": 55,
+              "6": 195,
+              "7": 126,
+              "8": 75,
+              "9": 184,
+              "10": 0,
+              "11": 96
+            }
+          }
+        },
+        "enabled_methods": [
+          "totp"
+        ],
+        "__v": 0,
+        "project_id": "69d663cefef44ab5d72c7fc4"
+      }
+    },
+    {
+      "kind": "oauth",
+      "source_id": "oauth_app_6a9884a634b55136339f22d4",
+      "name": "BluuPay",
+      "slug": "bluupay",
+      "status": "active",
+      "definition": {
+        "name": "BluuPay",
+        "slug": "bluupay",
+        "status": "active",
+        "redirect_uris": [
+          "http://localhost:5173/oauth/google"
+        ],
+        "allowed_origins": [],
+        "token_exposure_policy": "metadata_only",
+        "pkce_policy": "required",
+        "exchange_code_ttl_seconds": 60,
+        "connection_storage": "persistent",
+        "__v": 0,
+        "project_id": "69d663cefef44ab5d72c7fc4"
+      },
+      "catalog": {
+        "providers": [
+          {
+            "alias": "google",
+            "display_name": "Google",
+            "source_type": "template",
+            "protocol": "oauth2",
+            "template_id": "oauth_tpl_6a822881563fa6a3492c9be1",
+            "credential_mode": "template_default",
+            "scope_policy": "connector_default",
+            "scopes": [],
+            "selected_scopes": [
+              "openid",
+              "email",
+              "profile"
+            ],
+            "pkce_override": "inherit"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "oauth",
+      "source_id": "oauth_app_6a74c2d89e37c37e4bb80017",
+      "name": "Cliodot Authentication",
+      "slug": "cliodot-authentication",
+      "status": "active",
+      "definition": {
+        "name": "Cliodot Authentication",
+        "slug": "cliodot-authentication",
+        "status": "active",
+        "redirect_uris": [
+          "https://api.com"
+        ],
+        "allowed_origins": [],
+        "token_exposure_policy": "metadata_only",
+        "pkce_policy": "required",
+        "exchange_code_ttl_seconds": 60,
+        "connection_storage": "persistent",
+        "__v": 0,
+        "project_id": "69d663cefef44ab5d72c7fc4"
+      },
+      "catalog": {
+        "providers": []
+      }
+    },
+    {
+      "kind": "oauth",
+      "source_id": "oauth_app_6a8227b0563fa6a3492c9b13",
+      "name": "IkeTest",
+      "slug": "iketest",
+      "status": "active",
+      "definition": {
+        "name": "IkeTest",
+        "slug": "iketest",
+        "status": "active",
+        "redirect_uris": [
+          "http://localhost:3000/oauth-apps"
+        ],
+        "allowed_origins": [],
+        "token_exposure_policy": "include_access_token",
+        "pkce_policy": "required",
+        "exchange_code_ttl_seconds": 60,
+        "connection_storage": "persistent",
+        "__v": 0,
+        "project_id": "69d663cefef44ab5d72c7fc4"
+      },
+      "catalog": {
+        "providers": [
+          {
+            "alias": "github",
+            "display_name": "GitHub Provider",
+            "source_type": "template",
+            "protocol": "oauth2",
+            "template_id": "oauth_tpl_6a4e4e1c4af14712a598786b",
+            "credential_mode": "customer_owned",
+            "scope_policy": "connector_default",
+            "scopes": [],
+            "selected_scopes": [
+              "read:user",
+              "user:email"
+            ],
+            "pkce_override": "inherit"
+          },
+          {
+            "alias": "google",
+            "display_name": "Google",
+            "source_type": "template",
+            "protocol": "oauth2",
+            "template_id": "oauth_tpl_6a822881563fa6a3492c9be1",
+            "credential_mode": "template_default",
+            "scope_policy": "connector_default",
+            "scopes": [],
+            "selected_scopes": [
+              "openid",
+              "email",
+              "profile"
+            ],
+            "pkce_override": "inherit"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "oauth",
+      "source_id": "oauth_app_6a4ede6e732735638a8a7391",
+      "name": "Zer",
+      "slug": "zer",
+      "status": "active",
+      "definition": {
+        "name": "Zer",
+        "slug": "zer",
+        "status": "active",
+        "redirect_uris": [
+          "http://localhost:3000/oauth-apps"
+        ],
+        "allowed_origins": [],
+        "token_exposure_policy": "include_access_token",
+        "pkce_policy": "required",
+        "exchange_code_ttl_seconds": 60,
+        "connection_storage": "persistent",
+        "__v": 0,
+        "project_id": "69d663cefef44ab5d72c7fc4"
+      },
+      "catalog": {
+        "providers": [
+          {
+            "alias": "calender",
+            "display_name": "Google Calender",
+            "source_type": "connector",
+            "protocol": "oauth2",
+            "connector_id": "6a3e9553f470e4622da97f63",
+            "credential_mode": "customer_owned",
+            "scope_policy": "connector_default",
+            "scopes": [],
+            "selected_scopes": [],
+            "pkce_override": "inherit"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "commercial",
+      "source_id": "com_app_6a79f20788bba271bbe6e013",
+      "name": "Donkey sIGN",
+      "slug": "donkey-sign",
+      "status": "active",
+      "definition": {
+        "name": "Donkey sIGN",
+        "slug": "donkey-sign",
+        "status": "active",
+        "grace_days": 3,
+        "renew_ahead_days": 3,
+        "renewal_retry_attempts": 3,
+        "__v": 0,
+        "default_tax_rate_key": null,
+        "fx_rates": [
+          {
+            "currency": "NGN",
+            "rate_to_reporting": 0.00054,
+            "as_of": {}
+          },
+          {
+            "currency": "GBP",
+            "rate_to_reporting": 1,
+            "as_of": {}
+          },
+          {
+            "currency": "EUR",
+            "rate_to_reporting": 0.85,
+            "as_of": {}
+          },
+          {
+            "currency": "USD",
+            "rate_to_reporting": 0.74
+          }
+        ],
+        "reporting_currency": "GBP",
+        "default_plan_change_apply_at": "immediate",
+        "default_usage_rollover": "carry_unused",
+        "default_billing_mode": "hybrid",
+        "default_payg_charge_threshold_amount": 10000,
+        "default_payg_hard_cap_amount": null,
+        "default_payg_overage_policy": "accrue_and_topup",
+        "project_id": "69d663cefef44ab5d72c7fc4"
+      },
+      "catalog": {
+        "features": [
+          {
+            "key": "api_calls",
+            "name": "Api Calls",
+            "kind": "limit",
+            "unit": "120",
+            "default_increment": 1,
+            "description": "Outbound API Calls",
+            "__v": 0
+          },
+          {
+            "key": "total_users",
+            "name": "Total Users",
+            "kind": "metered",
+            "unit": "734",
+            "default_increment": 1,
+            "description": "tOATAL users",
+            "__v": 0
+          },
+          {
+            "key": "seats",
+            "name": "Seats",
+            "kind": "limit",
+            "unit": "12",
+            "default_increment": 1,
+            "__v": 0
+          }
+        ],
+        "plans": [
+          {
+            "key": "free",
+            "name": "Free Plan",
+            "currency": "USD",
+            "amount": 4900,
+            "prices": [
+              {
+                "currency": "USD",
+                "amount": 4900,
+                "active": true,
+                "metadata": {
+                  "payment_id": 1234,
+                  "payment_product": 1243
+                }
+              },
+              {
+                "currency": "NGN",
+                "amount": 5300000,
+                "active": true
+              }
+            ],
+            "default_currency": "USD",
+            "interval": "monthly",
+            "entitlements": [
+              {
+                "feature_key": "api_calls",
+                "enabled": true,
+                "limit": 12
+              },
+              {
+                "feature_key": "total_users",
+                "enabled": true,
+                "limit": 23
+              }
+            ],
+            "trial_days": 14,
+            "allowed_addon_keys": [],
+            "metadata": {
+              "product_id": 1234
+            },
+            "__v": 0
+          },
+          {
+            "key": "pro",
+            "name": "Pro",
+            "description": "Pro lan",
+            "currency": "USD",
+            "amount": 4900,
+            "prices": [
+              {
+                "currency": "USD",
+                "amount": 4900,
+                "active": true
+              },
+              {
+                "currency": "NGN",
+                "amount": 10000000,
+                "active": true,
+                "metadata": {
+                  "ngn_price_id": 34893487
+                }
+              },
+              {
+                "currency": "GBP",
+                "amount": 100000,
+                "active": true
+              },
+              {
+                "currency": "EUR",
+                "amount": 130000,
+                "active": true,
+                "metadata": {
+                  "eur_price_id": 8374837487
+                }
+              }
+            ],
+            "default_currency": "USD",
+            "interval": "monthly",
+            "entitlements": [
+              {
+                "feature_key": "api_calls",
+                "enabled": true,
+                "limit": 120
+              },
+              {
+                "feature_key": "seats",
+                "enabled": true,
+                "limit": 12
+              },
+              {
+                "feature_key": "total_users",
+                "enabled": true,
+                "limit": 734
+              }
+            ],
+            "trial_days": 14,
+            "allowed_addon_keys": [
+              "extra_seatsCat"
+            ],
+            "__v": 0
+          },
+          {
+            "key": "hafg",
+            "name": "Daily Combos",
+            "description": "Given Great",
+            "currency": "NGN",
+            "amount": 150000000,
+            "prices": [
+              {
+                "currency": "USD",
+                "amount": 90000,
+                "active": true,
+                "metadata": {
+                  "price_id": "1234567IUERUI",
+                  "product_id": "734878HK"
+                }
+              },
+              {
+                "currency": "NGN",
+                "amount": 150000000,
+                "active": true
+              },
+              {
+                "currency": "GBP",
+                "amount": 70000,
+                "active": true
+              },
+              {
+                "currency": "EUR",
+                "amount": 80000,
+                "active": true
+              }
+            ],
+            "default_currency": "NGN",
+            "interval": "weekly",
+            "entitlements": [
+              {
+                "feature_key": "api_calls",
+                "enabled": false,
+                "limit": 120
+              },
+              {
+                "feature_key": "seats",
+                "enabled": false,
+                "limit": 12
+              },
+              {
+                "feature_key": "total_users",
+                "enabled": true,
+                "limit": 6000
+              }
+            ],
+            "trial_days": 0,
+            "allowed_addon_keys": [
+              "cure",
+              "extra_seatsCat"
+            ],
+            "__v": 0
+          },
+          {
+            "key": "er",
+            "name": "erer",
+            "description": "r",
+            "currency": "USD",
+            "amount": 4900,
+            "prices": [
+              {
+                "currency": "USD",
+                "amount": 4900,
+                "active": true
+              }
+            ],
+            "default_currency": "USD",
+            "interval": "monthly",
+            "entitlements": [
+              {
+                "feature_key": "api_calls",
+                "enabled": false,
+                "limit": 120
+              },
+              {
+                "feature_key": "seats",
+                "enabled": false,
+                "limit": 12
+              },
+              {
+                "feature_key": "total_users",
+                "enabled": false,
+                "limit": 734
+              }
+            ],
+            "trial_days": 14,
+            "allowed_addon_keys": [],
+            "__v": 0
+          },
+          {
+            "key": "payg",
+            "name": "Pay as you Go",
+            "description": "Growtn Main plan",
+            "currency": "USD",
+            "amount": 200000,
+            "prices": [
+              {
+                "currency": "USD",
+                "amount": 200000,
+                "active": true
+              },
+              {
+                "currency": "GBP",
+                "amount": 270000,
+                "active": true
+              },
+              {
+                "currency": "EUR",
+                "amount": 180000,
+                "active": true
+              },
+              {
+                "currency": "NGN",
+                "amount": 200000000,
+                "active": true
+              }
+            ],
+            "default_currency": "USD",
+            "interval": "custom",
+            "interval_days": 3,
+            "entitlements": [
+              {
+                "feature_key": "api_calls",
+                "enabled": true,
+                "limit": 120,
+                "topup_packs": [
+                  {
+                    "units": 100,
+                    "prices": [
+                      {
+                        "currency": "USD",
+                        "amount": 30000,
+                        "active": true
+                      },
+                      {
+                        "currency": "NGN",
+                        "amount": 60000000,
+                        "active": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "feature_key": "seats",
+                "enabled": true,
+                "limit": 12,
+                "unit_prices": [
+                  {
+                    "currency": "NGN",
+                    "amount": 50000000,
+                    "active": true
+                  },
+                  {
+                    "currency": "USD",
+                    "amount": 50000,
+                    "active": true
+                  }
+                ]
+              },
+              {
+                "feature_key": "total_users",
+                "enabled": true,
+                "limit": 734,
+                "unit_prices": [
+                  {
+                    "currency": "USD",
+                    "amount": 2000,
+                    "active": true
+                  },
+                  {
+                    "currency": "GBP",
+                    "amount": 1000,
+                    "active": true
+                  }
+                ],
+                "topup_packs": [
+                  {
+                    "units": 100,
+                    "prices": [
+                      {
+                        "currency": "USD",
+                        "amount": 50000,
+                        "active": true
+                      },
+                      {
+                        "currency": "GBP",
+                        "amount": 40000,
+                        "active": true
+                      },
+                      {
+                        "currency": "EUR",
+                        "amount": 70000,
+                        "active": true
+                      },
+                      {
+                        "currency": "NGN",
+                        "amount": 10000000,
+                        "active": true
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "billing_mode": "payg",
+            "payg_overage_policy": "accrue",
+            "payg_charge_threshold_amount": 50000,
+            "payg_hard_cap_amount": null,
+            "trial_days": 0,
+            "allowed_addon_keys": [
+              "cure",
+              "extra_seatsCat"
+            ],
+            "__v": 0
+          },
+          {
+            "key": "pay-accure",
+            "name": "Accure Pay",
+            "currency": "USD",
+            "amount": 4900,
+            "prices": [
+              {
+                "currency": "USD",
+                "amount": 4900,
+                "active": true
+              }
+            ],
+            "default_currency": "USD",
+            "interval": "custom",
+            "interval_days": 3,
+            "entitlements": [
+              {
+                "feature_key": "api_calls",
+                "enabled": true,
+                "limit": 120
+              },
+              {
+                "feature_key": "seats",
+                "enabled": false,
+                "limit": 12
+              },
+              {
+                "feature_key": "total_users",
+                "enabled": false,
+                "limit": 734
+              }
+            ],
+            "billing_mode": "hybrid",
+            "payg_overage_policy": "deny",
+            "payg_charge_threshold_amount": 10000,
+            "payg_hard_cap_amount": null,
+            "trial_days": 0,
+            "allowed_addon_keys": [],
+            "__v": 0
+          }
+        ],
+        "addons": [
+          {
+            "key": "extra_seatsCat",
+            "name": "ExtraSeta",
+            "kind": "seat",
+            "prices": [
+              {
+                "currency": "USD",
+                "amount": 10000,
+                "active": true
+              },
+              {
+                "currency": "NGN",
+                "amount": 1000000,
+                "active": true
+              }
+            ],
+            "feature_key": "api_calls",
+            "entitlement_delta": 123,
+            "__v": 0
+          },
+          {
+            "key": "cure",
+            "name": "New Cure",
+            "kind": "seat",
+            "prices": [
+              {
+                "currency": "USD",
+                "amount": 1000,
+                "active": true
+              },
+              {
+                "currency": "NGN",
+                "amount": 1232400,
+                "active": true
+              },
+              {
+                "currency": "EUR",
+                "amount": 5000,
+                "active": true
+              }
+            ],
+            "feature_key": "total_users",
+            "entitlement_delta": 12,
+            "__v": 0
+          }
+        ],
+        "discounts": [
+          {
+            "code": "LAUNCH34",
+            "name": "Launch with 34% discount",
+            "type": "percent",
+            "percent_off": 20,
+            "amounts_off": [],
+            "duration": "repeating",
+            "duration_months": 3,
+            "max_redemptions": 3,
+            "applies_to_plans": [
+              "free"
+            ],
+            "starts_at": {},
+            "ends_at": {},
+            "active": false,
+            "__v": 0
+          },
+          {
+            "code": "PATCH100",
+            "name": "Lpunch 201",
+            "type": "percent",
+            "percent_off": 40,
+            "amounts_off": [],
+            "duration": "repeating",
+            "duration_months": 3,
+            "max_redemptions": 10,
+            "applies_to_plans": [
+              "er",
+              "free",
+              "hafg",
+              "pro"
+            ],
+            "starts_at": {},
+            "ends_at": {},
+            "active": true,
+            "__v": 0
+          }
+        ],
+        "tax_rates": [
+          {
+            "key": "ng-vat",
+            "name": "Bruiz Flash",
+            "percent": 10,
+            "inclusive": true,
+            "country": "NIGERIA",
+            "region": "FCT",
+            "active": true,
+            "__v": 0
+          },
+          {
+            "key": "us-vat",
+            "name": "Adeyemi Opeyemi",
+            "percent": 7.5,
+            "inclusive": true,
+            "country": "NIGERIA",
+            "region": "Federal Capital Territory",
+            "active": true,
+            "metadata": {
+              "RE": "calls"
+            },
+            "__v": 0
+          },
+          {
+            "key": "eu-vat",
+            "name": "EU Areas",
+            "percent": 7.5,
+            "inclusive": false,
+            "country": "UE",
+            "region": "Eur",
+            "active": true,
+            "__v": 0
+          }
+        ]
+      }
+    },
+    {
+      "kind": "commercial",
+      "source_id": "com_app_6a957a43b94ce10fa639c21d",
+      "name": "Bluu",
+      "slug": "bluu",
+      "status": "active",
+      "definition": {
+        "name": "Bluu",
+        "slug": "bluu",
+        "status": "active",
+        "grace_days": 3,
+        "renew_ahead_days": 3,
+        "renewal_retry_attempts": 3,
+        "default_plan_change_apply_at": "immediate",
+        "default_usage_rollover": "none",
+        "default_billing_mode": "recurring",
+        "default_payg_overage_policy": "deny",
+        "reporting_currency": "USD",
+        "auto_create_wallet_on_topup": true,
+        "fx_rates": [],
+        "__v": 0,
+        "project_id": "69d663cefef44ab5d72c7fc4"
+      },
+      "catalog": {
+        "features": [],
+        "plans": [],
+        "addons": [],
+        "discounts": [],
+        "tax_rates": []
+      }
+    },
+    {
+      "kind": "event",
+      "source_id": "evt_app_6a958080019d2fe38b5fb3c8",
+      "name": "Bluu Event",
+      "slug": "bluu-event",
+      "status": "active",
+      "definition": {
+        "name": "Bluu Event",
+        "slug": "bluu-event",
+        "status": "active",
+        "__v": 0,
+        "project_id": "69d663cefef44ab5d72c7fc4"
+      },
+      "catalog": {
+        "events": [
+          {
+            "name": "account.opened",
+            "delivery_profile": "reliable",
+            "status": "active"
+          },
+          {
+            "name": "wallet.credited",
+            "description": "Commercial lifecycle wallet.credited",
+            "delivery_profile": "reliable",
+            "status": "active"
+          },
+          {
+            "name": "wallet.settled",
+            "description": "Commercial lifecycle wallet.settled",
+            "delivery_profile": "reliable",
+            "status": "active"
+          },
+          {
+            "name": "wallet.create",
+            "delivery_profile": "reliable",
+            "status": "active"
+          },
+          {
+            "name": "kyc.submitted",
+            "delivery_profile": "reliable",
+            "status": "active"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "memory",
+      "source_id": "mem_app_6a75aa410df9a5d648aacda0",
+      "name": "Support",
+      "slug": "support",
+      "description": "Know users in their support",
+      "status": "active",
+      "definition": {
+        "project_id": "69d663cefef44ab5d72c7fc4",
+        "name": "Support",
+        "slug": "support",
+        "description": "Know users in their support",
+        "status": "active",
+        "embedding_profile_id": "mem_embed_6a75aa000df9a5d648aacd91",
+        "__v": 0
+      },
+      "catalog": {
+        "collections": [
+          {
+            "name": "Policies",
+            "slug": "policies"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "memory",
+      "source_id": "mem_app_6a75af073aaf35b16c884441",
+      "name": "Customer Memory",
+      "slug": "customer-memory",
+      "description": "Seeded knowledge base for customer, billing, and support recall tests",
+      "status": "active",
+      "definition": {
+        "name": "Customer Memory",
+        "slug": "customer-memory",
+        "description": "Seeded knowledge base for customer, billing, and support recall tests",
+        "status": "active",
+        "embedding_profile_id": "mem_embed_6a75aa000df9a5d648aacd91",
+        "__v": 0,
+        "project_id": "69d663cefef44ab5d72c7fc4"
+      },
+      "catalog": {
+        "collections": [
+          {
+            "name": "customers",
+            "slug": "customers"
+          },
+          {
+            "name": "transactions",
+            "slug": "transactions"
+          },
+          {
+            "name": "support_tickets",
+            "slug": "support-tickets"
+          },
+          {
+            "name": "policies",
+            "slug": "policies"
+          },
+          {
+            "name": "notes",
+            "slug": "notes"
+          },
+          {
+            "name": "faqs",
+            "slug": "faqs"
+          },
+          {
+            "name": "playbooks",
+            "slug": "playbooks"
+          },
+          {
+            "name": "products",
+            "slug": "products"
+          },
+          {
+            "name": "merchants",
+            "slug": "merchants"
+          },
+          {
+            "name": "knowledge-articles",
+            "slug": "knowledge-articles"
+          },
+          {
+            "name": "refunds",
+            "slug": "refunds"
+          },
+          {
+            "name": "dunning-events",
+            "slug": "dunning-events"
+          },
+          {
+            "name": "call-transcripts",
+            "slug": "call-transcripts"
+          },
+          {
+            "name": "settlements",
+            "slug": "settlements"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "identity",
+      "source_id": "globus",
+      "name": "Globus",
+      "slug": "globus",
+      "description": "Globus Payment App",
+      "status": "active",
+      "definition": {
+        "name": "Globus",
+        "slug": "globus",
+        "description": "Globus Payment App",
+        "status": "active",
+        "token_policy": {
+          "access_ttl_seconds": 3600,
+          "refresh_ttl_seconds": 2592000,
+          "algorithm": "HS256",
+          "include_standard_claims": true
+        },
+        "scope_policy": {
+          "enabled": true,
+          "issuance": "all_granted"
+        },
+        "scopes": [
+          {
+            "name": "evt:evt_app_6a6df7569b87bf5bda6885c4:publish",
+            "description": "Payroll Events publish"
+          },
+          {
+            "name": "evt:evt_app_6a6df7569b87bf5bda6885c4:subscribe",
+            "description": "Payroll Events subscribe"
+          },
+          {
+            "name": "evt:evt_app_6a6df7569b87bf5bda6885c4:read",
+            "description": "Payroll Events read"
+          },
+          {
+            "name": "evt:evt_app_6a6df7569b87bf5bda6885c4:manage",
+            "description": "Payroll Events manage"
+          },
+          {
+            "name": "evt:evt_app_6a6df71d9b87bf5bda688588:publish",
+            "description": "Paystack publish"
+          },
+          {
+            "name": "evt:evt_app_6a6df71d9b87bf5bda688588:subscribe",
+            "description": "Paystack subscribe"
+          },
+          {
+            "name": "evt:evt_app_6a6df71d9b87bf5bda688588:read",
+            "description": "Paystack read"
+          },
+          {
+            "name": "evt:evt_app_6a6df71d9b87bf5bda688588:manage",
+            "description": "Paystack manage"
+          },
+          {
+            "name": "gw:6a655d4ac34089710c98e65b:invoke",
+            "description": "Payment invoke"
+          },
+          {
+            "name": "gw:6a655d4ac34089710c98e65b:read",
+            "description": "Payment read"
+          },
+          {
+            "name": "gw:6a655d4ac34089710c98e65b:manage",
+            "description": "Payment manage"
+          }
+        ],
+        "auth_pipeline": {
+          "enabled": false,
+          "stages": []
+        },
+        "linked_resources": [
+          {
+            "resource_type": "event_app",
+            "resource_id": "evt_app_6a6df7569b87bf5bda6885c4",
+            "name": "Payroll Events",
+            "permissions": [
+              "publish",
+              "subscribe",
+              "read",
+              "manage"
+            ],
+            "linked_at": {},
+            "linked_by": "69bb9e6e37566079537222a4"
+          },
+          {
+            "resource_type": "event_app",
+            "resource_id": "evt_app_6a6df71d9b87bf5bda688588",
+            "name": "Paystack",
+            "permissions": [
+              "publish",
+              "subscribe",
+              "read",
+              "manage"
+            ],
+            "linked_at": {},
+            "linked_by": "69bb9e6e37566079537222a4"
+          },
+          {
+            "resource_type": "gateway",
+            "resource_id": "6a655d4ac34089710c98e65b",
+            "name": "Payment",
+            "permissions": [
+              "invoke",
+              "read",
+              "manage"
+            ],
+            "linked_at": {},
+            "linked_by": "69bb9e6e37566079537222a4"
+          }
+        ],
+        "__v": 0,
+        "project_id": "69d663cefef44ab5d72c7fc4"
+      }
+    },
+    {
+      "kind": "identity",
+      "source_id": "sales",
+      "name": "Sales",
+      "slug": "sales",
+      "status": "active",
+      "definition": {
+        "name": "Sales",
+        "slug": "sales",
+        "status": "active",
+        "token_policy": {
+          "access_ttl_seconds": 3600,
+          "refresh_ttl_seconds": 2592000,
+          "algorithm": "HS256",
+          "include_standard_claims": true
+        },
+        "scope_policy": {
+          "enabled": true,
+          "issuance": "all_granted"
+        },
+        "scopes": [],
+        "auth_pipeline": {
+          "enabled": false,
+          "stages": []
+        },
+        "linked_resources": [],
+        "__v": 0,
+        "project_id": "69d663cefef44ab5d72c7fc4"
+      }
+    },
+    {
+      "kind": "identity",
+      "source_id": "idms",
+      "name": "idms",
+      "slug": "idms",
+      "status": "active",
+      "definition": {
+        "name": "idms",
+        "slug": "idms",
+        "status": "active",
+        "token_policy": {
+          "access_ttl_seconds": 3600,
+          "refresh_ttl_seconds": 2592000,
+          "algorithm": "HS256",
+          "include_standard_claims": true
+        },
+        "scope_policy": {
+          "enabled": true,
+          "issuance": "all_granted"
+        },
+        "scopes": [],
+        "auth_pipeline": {
+          "enabled": false,
+          "stages": []
+        },
+        "linked_resources": [],
+        "__v": 0,
+        "project_id": "69d663cefef44ab5d72c7fc4"
+      }
+    },
+    {
+      "kind": "identity",
+      "source_id": "donkeysign",
+      "name": "DonkeySign",
+      "slug": "donkeysign",
+      "status": "active",
+      "definition": {
+        "name": "DonkeySign",
+        "slug": "donkeysign",
+        "status": "active",
+        "token_policy": {
+          "access_ttl_seconds": 3600,
+          "refresh_ttl_seconds": 2592000,
+          "algorithm": "HS256",
+          "include_standard_claims": true
+        },
+        "scope_policy": {
+          "enabled": true,
+          "issuance": "all_granted"
+        },
+        "scopes": [],
+        "auth_pipeline": {
+          "enabled": false,
+          "stages": []
+        },
+        "linked_resources": [],
+        "__v": 0,
+        "project_id": "69d663cefef44ab5d72c7fc4"
+      }
+    },
+    {
+      "kind": "identity",
+      "source_id": "cliodot",
+      "name": "Cliodot",
+      "slug": "cliodot",
+      "status": "active",
+      "definition": {
+        "name": "Cliodot",
+        "slug": "cliodot",
+        "status": "active",
+        "token_policy": {
+          "access_ttl_seconds": 3600,
+          "refresh_ttl_seconds": 2592000,
+          "algorithm": "HS256",
+          "include_standard_claims": true
+        },
+        "scope_policy": {
+          "enabled": true,
+          "issuance": "all_granted"
+        },
+        "scopes": [
+          {
+            "name": "employees.read",
+            "description": "Read Empllyee"
+          },
+          {
+            "name": "employees.create",
+            "description": "Create Employees"
+          },
+          {
+            "name": "oauth:oauth_app_6a74c2d89e37c37e4bb80017:connect",
+            "description": "Cliodot Authentication connect"
+          },
+          {
+            "name": "oauth:oauth_app_6a74c2d89e37c37e4bb80017:token",
+            "description": "Cliodot Authentication token"
+          },
+          {
+            "name": "oauth:oauth_app_6a74c2d89e37c37e4bb80017:read",
+            "description": "Cliodot Authentication read"
+          },
+          {
+            "name": "oauth:oauth_app_6a74c2d89e37c37e4bb80017:manage",
+            "description": "Cliodot Authentication manage"
+          },
+          {
+            "name": "auth:auth_app_6a74c30f9e37c37e4bb8005e:users",
+            "description": "Authentication users"
+          },
+          {
+            "name": "auth:auth_app_6a74c30f9e37c37e4bb8005e:mfa",
+            "description": "Authentication mfa"
+          },
+          {
+            "name": "auth:auth_app_6a74c30f9e37c37e4bb8005e:read",
+            "description": "Authentication read"
+          },
+          {
+            "name": "auth:auth_app_6a74c30f9e37c37e4bb8005e:manage",
+            "description": "Authentication manage"
+          },
+          {
+            "name": "evt:evt_app_6a74c3389e37c37e4bb8007f:publish",
+            "description": "ClioAuthEvents publish"
+          },
+          {
+            "name": "evt:evt_app_6a74c3389e37c37e4bb8007f:subscribe",
+            "description": "ClioAuthEvents subscribe"
+          },
+          {
+            "name": "evt:evt_app_6a74c3389e37c37e4bb8007f:read",
+            "description": "ClioAuthEvents read"
+          },
+          {
+            "name": "evt:evt_app_6a74c3389e37c37e4bb8007f:manage",
+            "description": "ClioAuthEvents manage"
+          },
+          {
+            "name": "mem:mem_app_6a75aa410df9a5d648aacda0:store",
+            "description": "Support store"
+          },
+          {
+            "name": "mem:mem_app_6a75aa410df9a5d648aacda0:search",
+            "description": "Support search"
+          },
+          {
+            "name": "mem:mem_app_6a75aa410df9a5d648aacda0:manage",
+            "description": "Support manage"
+          },
+          {
+            "name": "com:com_app_6a79f20788bba271bbe6e013:check",
+            "description": "Donkey sIGN check"
+          },
+          {
+            "name": "com:com_app_6a79f20788bba271bbe6e013:consume",
+            "description": "Donkey sIGN consume"
+          },
+          {
+            "name": "com:com_app_6a79f20788bba271bbe6e013:state",
+            "description": "Donkey sIGN state"
+          },
+          {
+            "name": "com:com_app_6a79f20788bba271bbe6e013:customers",
+            "description": "Donkey sIGN customers"
+          },
+          {
+            "name": "com:com_app_6a79f20788bba271bbe6e013:plans",
+            "description": "Donkey sIGN plans"
+          },
+          {
+            "name": "com:com_app_6a79f20788bba271bbe6e013:features",
+            "description": "Donkey sIGN features"
+          },
+          {
+            "name": "com:com_app_6a79f20788bba271bbe6e013:subscriptions",
+            "description": "Donkey sIGN subscriptions"
+          },
+          {
+            "name": "com:com_app_6a79f20788bba271bbe6e013:seats",
+            "description": "Donkey sIGN seats"
+          },
+          {
+            "name": "com:com_app_6a79f20788bba271bbe6e013:licenses",
+            "description": "Donkey sIGN licenses"
+          },
+          {
+            "name": "com:com_app_6a79f20788bba271bbe6e013:events",
+            "description": "Donkey sIGN events"
+          },
+          {
+            "name": "com:com_app_6a79f20788bba271bbe6e013:analytics",
+            "description": "Donkey sIGN analytics"
+          },
+          {
+            "name": "com:com_app_6a79f20788bba271bbe6e013:manage",
+            "description": "Donkey sIGN manage"
+          },
+          {
+            "name": "com:com_app_6a79f20788bba271bbe6e013:payments",
+            "description": "Donkey sIGN payments"
+          },
+          {
+            "name": "com:com_app_6a79f20788bba271bbe6e013:invoices",
+            "description": "Donkey sIGN invoices"
+          },
+          {
+            "name": "com:com_app_6a79f20788bba271bbe6e013:ledger",
+            "description": "Donkey sIGN ledger"
+          },
+          {
+            "name": "com:com_app_6a79f20788bba271bbe6e013:credit",
+            "description": "Donkey sIGN credit"
+          },
+          {
+            "name": "com:com_app_6a79f20788bba271bbe6e013:debit",
+            "description": "Donkey sIGN debit"
+          },
+          {
+            "name": "com:com_app_6a79f20788bba271bbe6e013:transfer",
+            "description": "Donkey sIGN transfer"
+          },
+          {
+            "name": "com:com_app_6a79f20788bba271bbe6e013:reverse",
+            "description": "Donkey sIGN reverse"
+          },
+          {
+            "name": "com:com_app_6a79f20788bba271bbe6e013:holds",
+            "description": "Donkey sIGN holds"
+          },
+          {
+            "name": "com:com_app_6a79f20788bba271bbe6e013:units",
+            "description": "Donkey sIGN units"
+          },
+          {
+            "name": "com:com_app_6a79f20788bba271bbe6e013:exchange",
+            "description": "Donkey sIGN exchange"
+          },
+          {
+            "name": "evt:evt_app_6a6a7dff40641e9dc579f212:publish",
+            "description": "Deliver publish"
+          },
+          {
+            "name": "evt:evt_app_6a6a7dff40641e9dc579f212:subscribe",
+            "description": "Deliver subscribe"
+          },
+          {
+            "name": "evt:evt_app_6a6a7dff40641e9dc579f212:read",
+            "description": "Deliver read"
+          },
+          {
+            "name": "evt:evt_app_6a6a7dff40641e9dc579f212:manage",
+            "description": "Deliver manage"
+          },
+          {
+            "name": "oauth:oauth_app_6a8227b0563fa6a3492c9b13:connect",
+            "description": "IkeTest connect"
+          },
+          {
+            "name": "oauth:oauth_app_6a8227b0563fa6a3492c9b13:token",
+            "description": "IkeTest token"
+          },
+          {
+            "name": "oauth:oauth_app_6a8227b0563fa6a3492c9b13:read",
+            "description": "IkeTest read"
+          },
+          {
+            "name": "oauth:oauth_app_6a8227b0563fa6a3492c9b13:manage",
+            "description": "IkeTest manage"
+          },
+          {
+            "name": "gw:6a37371cff8efa18d48fcff8:invoke",
+            "description": "XLive invoke"
+          },
+          {
+            "name": "gw:6a37371cff8efa18d48fcff8:read",
+            "description": "XLive read"
+          },
+          {
+            "name": "gw:6a37371cff8efa18d48fcff8:manage",
+            "description": "XLive manage"
+          },
+          {
+            "name": "ext:ext_6a884ac73962cd673c9c5680:authenticate",
+            "description": "Cliodot authenticate"
+          },
+          {
+            "name": "ext:cliodot:authenticate",
+            "description": "Cliodot authenticate (cliodot)"
+          }
+        ],
+        "auth_pipeline": {
+          "enabled": false,
+          "stages": []
+        },
+        "linked_resources": [
+          {
+            "resource_type": "oauth_app",
+            "resource_id": "oauth_app_6a74c2d89e37c37e4bb80017",
+            "name": "Cliodot Authentication",
+            "permissions": [
+              "connect",
+              "token",
+              "read",
+              "manage"
+            ],
+            "linked_at": {},
+            "linked_by": "69bb9e6e37566079537222a4"
+          },
+          {
+            "resource_type": "auth_app",
+            "resource_id": "auth_app_6a74c30f9e37c37e4bb8005e",
+            "name": "Authentication",
+            "permissions": [
+              "users",
+              "mfa",
+              "read",
+              "manage"
+            ],
+            "linked_at": {},
+            "linked_by": "69bb9e6e37566079537222a4"
+          },
+          {
+            "resource_type": "event_app",
+            "resource_id": "evt_app_6a74c3389e37c37e4bb8007f",
+            "name": "ClioAuthEvents",
+            "permissions": [
+              "publish",
+              "subscribe",
+              "read",
+              "manage"
+            ],
+            "linked_at": {},
+            "linked_by": "69bb9e6e37566079537222a4"
+          },
+          {
+            "resource_type": "memory_app",
+            "resource_id": "mem_app_6a75aa410df9a5d648aacda0",
+            "name": "Support",
+            "permissions": [
+              "store",
+              "search",
+              "manage"
+            ],
+            "linked_at": {},
+            "linked_by": "69bb9e6e37566079537222a4"
+          },
+          {
+            "resource_type": "commercial_app",
+            "resource_id": "com_app_6a79f20788bba271bbe6e013",
+            "name": "Donkey sIGN",
+            "permissions": [
+              "check",
+              "consume",
+              "state",
+              "customers",
+              "plans",
+              "features",
+              "subscriptions",
+              "seats",
+              "licenses",
+              "events",
+              "analytics",
+              "manage",
+              "payments",
+              "invoices",
+              "ledger",
+              "credit",
+              "debit",
+              "transfer",
+              "reverse",
+              "holds",
+              "units",
+              "exchange"
+            ],
+            "linked_at": {},
+            "linked_by": "69bb9e6e37566079537222a4"
+          },
+          {
+            "resource_type": "event_app",
+            "resource_id": "evt_app_6a6a7dff40641e9dc579f212",
+            "name": "Deliver",
+            "permissions": [
+              "publish",
+              "subscribe",
+              "read",
+              "manage"
+            ],
+            "linked_at": {},
+            "linked_by": "69bb9e6e37566079537222a4"
+          },
+          {
+            "resource_type": "oauth_app",
+            "resource_id": "oauth_app_6a8227b0563fa6a3492c9b13",
+            "name": "IkeTest",
+            "permissions": [
+              "connect",
+              "token",
+              "read",
+              "manage"
+            ],
+            "linked_at": {},
+            "linked_by": "69bb9e6e37566079537222a4"
+          },
+          {
+            "resource_type": "gateway",
+            "resource_id": "6a37371cff8efa18d48fcff8",
+            "name": "XLive",
+            "permissions": [
+              "invoke",
+              "read",
+              "manage"
+            ],
+            "linked_at": {},
+            "linked_by": "69bb9e6e37566079537222a4"
+          }
+        ],
+        "__v": 0,
+        "jwt_signing_secret_previous_expires_at": {},
+        "project_id": "69d663cefef44ab5d72c7fc4"
+      }
+    },
+    {
+      "kind": "identity",
+      "source_id": "cliohub",
+      "name": "ClioHub",
+      "slug": "cliohub",
+      "status": "active",
+      "definition": {
+        "name": "ClioHub",
+        "slug": "cliohub",
+        "status": "active",
+        "token_policy": {
+          "access_ttl_seconds": 3600,
+          "refresh_ttl_seconds": 2592000,
+          "algorithm": "HS256",
+          "include_standard_claims": true
+        },
+        "scope_policy": {
+          "enabled": false,
+          "issuance": "all_granted"
+        },
+        "scopes": [],
+        "auth_pipeline": {
+          "enabled": false,
+          "stages": []
+        },
+        "linked_resources": [],
+        "__v": 0,
+        "project_id": "69d663cefef44ab5d72c7fc4"
+      }
+    },
+    {
+      "kind": "identity",
+      "source_id": "cliolicense",
+      "name": "ClioLicense",
+      "slug": "cliolicense",
+      "status": "active",
+      "definition": {
+        "name": "ClioLicense",
+        "slug": "cliolicense",
+        "status": "active",
+        "token_policy": {
+          "access_ttl_seconds": 3600,
+          "refresh_ttl_seconds": 2592000,
+          "algorithm": "HS256",
+          "include_standard_claims": true
+        },
+        "scope_policy": {
+          "enabled": true,
+          "issuance": "all_granted"
+        },
+        "scopes": [],
+        "auth_pipeline": {
+          "enabled": false,
+          "stages": []
+        },
+        "linked_resources": [],
+        "__v": 0,
+        "project_id": "69d663cefef44ab5d72c7fc4"
+      }
+    },
+    {
+      "kind": "identity",
+      "source_id": "betterbreaks",
+      "name": "BetterBreaks",
+      "slug": "betterbreaks",
+      "status": "active",
+      "definition": {
+        "name": "BetterBreaks",
+        "slug": "betterbreaks",
+        "status": "active",
+        "token_policy": {
+          "access_ttl_seconds": 3600,
+          "refresh_ttl_seconds": 2592000,
+          "algorithm": "HS256",
+          "include_standard_claims": true
+        },
+        "scope_policy": {
+          "enabled": true,
+          "issuance": "all_granted"
+        },
+        "scopes": [],
+        "auth_pipeline": {
+          "enabled": false,
+          "stages": []
+        },
+        "linked_resources": [],
+        "__v": 0,
+        "project_id": "69d663cefef44ab5d72c7fc4"
+      }
+    },
+    {
+      "kind": "identity",
+      "source_id": "teknotespro",
+      "name": "TeknotesPro",
+      "slug": "teknotespro",
+      "status": "active",
+      "definition": {
+        "name": "TeknotesPro",
+        "slug": "teknotespro",
+        "status": "active",
+        "token_policy": {
+          "access_ttl_seconds": 3600,
+          "refresh_ttl_seconds": 2592000,
+          "algorithm": "HS256",
+          "include_standard_claims": true
+        },
+        "scope_policy": {
+          "enabled": true,
+          "issuance": "all_granted"
+        },
+        "scopes": [
+          {
+            "name": "oauth:oauth_app_6a4ede6e732735638a8a7391:connect",
+            "description": "Zer connect"
+          },
+          {
+            "name": "oauth:oauth_app_6a4ede6e732735638a8a7391:token",
+            "description": "Zer token"
+          },
+          {
+            "name": "oauth:oauth_app_6a4ede6e732735638a8a7391:read",
+            "description": "Zer read"
+          },
+          {
+            "name": "oauth:oauth_app_6a4ede6e732735638a8a7391:manage",
+            "description": "Zer manage"
+          }
+        ],
+        "auth_pipeline": {
+          "enabled": false,
+          "stages": []
+        },
+        "linked_resources": [
+          {
+            "resource_type": "oauth_app",
+            "resource_id": "oauth_app_6a4ede6e732735638a8a7391",
+            "name": "Zer",
+            "permissions": [
+              "connect",
+              "token",
+              "read",
+              "manage"
+            ],
+            "linked_at": {},
+            "linked_by": "69bb9e6e37566079537222a4"
+          }
+        ],
+        "__v": 0,
+        "project_id": "69d663cefef44ab5d72c7fc4"
+      }
+    },
+    {
+      "kind": "identity",
+      "source_id": "bluupay",
+      "name": "BluuPay",
+      "slug": "bluupay",
+      "status": "active",
+      "definition": {
+        "name": "BluuPay",
+        "slug": "bluupay",
+        "status": "active",
+        "token_policy": {
+          "access_ttl_seconds": 3600,
+          "refresh_ttl_seconds": 2592000,
+          "algorithm": "HS256",
+          "include_standard_claims": true
+        },
+        "scope_policy": {
+          "enabled": true,
+          "issuance": "all_granted"
+        },
+        "scopes": [
+          {
+            "name": "ext:ext_6a9bfad7b45d1eb658f0eb33:authenticate",
+            "description": "Nomba MFB authenticate"
+          },
+          {
+            "name": "ext:nomba:authenticate",
+            "description": "Nomba MFB authenticate (nomba)"
+          },
+          {
+            "name": "ext:ext_6aab18421046aa4f3244593e:authenticate",
+            "description": "RMS authenticate"
+          },
+          {
+            "name": "ext:rms:authenticate",
+            "description": "RMS authenticate (rms)"
+          },
+          {
+            "name": "auth:auth_app_6a6df73e9b87bf5bda6885a3:users",
+            "description": "BluuPay users"
+          },
+          {
+            "name": "auth:auth_app_6a6df73e9b87bf5bda6885a3:mfa",
+            "description": "BluuPay mfa"
+          },
+          {
+            "name": "auth:auth_app_6a6df73e9b87bf5bda6885a3:read",
+            "description": "BluuPay read"
+          },
+          {
+            "name": "auth:auth_app_6a6df73e9b87bf5bda6885a3:manage",
+            "description": "BluuPay manage"
+          },
+          {
+            "name": "evt:evt_app_6a958080019d2fe38b5fb3c8:publish",
+            "description": "Bluu Event publish"
+          },
+          {
+            "name": "evt:evt_app_6a958080019d2fe38b5fb3c8:subscribe",
+            "description": "Bluu Event subscribe"
+          },
+          {
+            "name": "evt:evt_app_6a958080019d2fe38b5fb3c8:read",
+            "description": "Bluu Event read"
+          },
+          {
+            "name": "evt:evt_app_6a958080019d2fe38b5fb3c8:manage",
+            "description": "Bluu Event manage"
+          },
+          {
+            "name": "oauth:oauth_app_6a9884a634b55136339f22d4:connect",
+            "description": "BluuPay connect"
+          },
+          {
+            "name": "oauth:oauth_app_6a9884a634b55136339f22d4:token",
+            "description": "BluuPay token"
+          },
+          {
+            "name": "oauth:oauth_app_6a9884a634b55136339f22d4:read",
+            "description": "BluuPay read"
+          },
+          {
+            "name": "oauth:oauth_app_6a9884a634b55136339f22d4:manage",
+            "description": "BluuPay manage"
+          },
+          {
+            "name": "gw:6a9be21ab45d1eb658f0e582:invoke",
+            "description": "Bluu invoke"
+          },
+          {
+            "name": "gw:6a9be21ab45d1eb658f0e582:read",
+            "description": "Bluu read"
+          },
+          {
+            "name": "gw:6a9be21ab45d1eb658f0e582:manage",
+            "description": "Bluu manage"
+          },
+          {
+            "name": "com:com_app_6a957a43b94ce10fa639c21d:check",
+            "description": "Bluu check"
+          },
+          {
+            "name": "com:com_app_6a957a43b94ce10fa639c21d:consume",
+            "description": "Bluu consume"
+          },
+          {
+            "name": "com:com_app_6a957a43b94ce10fa639c21d:state",
+            "description": "Bluu state"
+          },
+          {
+            "name": "com:com_app_6a957a43b94ce10fa639c21d:customers",
+            "description": "Bluu customers"
+          },
+          {
+            "name": "com:com_app_6a957a43b94ce10fa639c21d:plans",
+            "description": "Bluu plans"
+          },
+          {
+            "name": "com:com_app_6a957a43b94ce10fa639c21d:features",
+            "description": "Bluu features"
+          },
+          {
+            "name": "com:com_app_6a957a43b94ce10fa639c21d:subscriptions",
+            "description": "Bluu subscriptions"
+          },
+          {
+            "name": "com:com_app_6a957a43b94ce10fa639c21d:payments",
+            "description": "Bluu payments"
+          },
+          {
+            "name": "com:com_app_6a957a43b94ce10fa639c21d:invoices",
+            "description": "Bluu invoices"
+          },
+          {
+            "name": "com:com_app_6a957a43b94ce10fa639c21d:seats",
+            "description": "Bluu seats"
+          },
+          {
+            "name": "com:com_app_6a957a43b94ce10fa639c21d:licenses",
+            "description": "Bluu licenses"
+          },
+          {
+            "name": "com:com_app_6a957a43b94ce10fa639c21d:events",
+            "description": "Bluu events"
+          },
+          {
+            "name": "com:com_app_6a957a43b94ce10fa639c21d:analytics",
+            "description": "Bluu analytics"
+          },
+          {
+            "name": "com:com_app_6a957a43b94ce10fa639c21d:ledger",
+            "description": "Bluu ledger"
+          },
+          {
+            "name": "com:com_app_6a957a43b94ce10fa639c21d:credit",
+            "description": "Bluu credit"
+          },
+          {
+            "name": "com:com_app_6a957a43b94ce10fa639c21d:debit",
+            "description": "Bluu debit"
+          },
+          {
+            "name": "com:com_app_6a957a43b94ce10fa639c21d:transfer",
+            "description": "Bluu transfer"
+          },
+          {
+            "name": "com:com_app_6a957a43b94ce10fa639c21d:reverse",
+            "description": "Bluu reverse"
+          },
+          {
+            "name": "com:com_app_6a957a43b94ce10fa639c21d:holds",
+            "description": "Bluu holds"
+          },
+          {
+            "name": "com:com_app_6a957a43b94ce10fa639c21d:units",
+            "description": "Bluu units"
+          },
+          {
+            "name": "com:com_app_6a957a43b94ce10fa639c21d:exchange",
+            "description": "Bluu exchange"
+          },
+          {
+            "name": "com:com_app_6a957a43b94ce10fa639c21d:manage",
+            "description": "Bluu manage"
+          },
+          {
+            "name": "psv:psv_app_6aa9665fb37cd4ca20c3bc81:execute",
+            "description": "Payment Collectors execute"
+          },
+          {
+            "name": "psv:psv_app_6aa9665fb37cd4ca20c3bc81:read",
+            "description": "Payment Collectors read"
+          },
+          {
+            "name": "psv:psv_app_6aa9665fb37cd4ca20c3bc81:manage",
+            "description": "Payment Collectors manage"
+          }
+        ],
+        "auth_pipeline": {
+          "enabled": false,
+          "stages": []
+        },
+        "linked_resources": [
+          {
+            "resource_type": "auth_app",
+            "resource_id": "auth_app_6a6df73e9b87bf5bda6885a3",
+            "name": "BluuPay",
+            "permissions": [
+              "users",
+              "mfa",
+              "read",
+              "manage"
+            ],
+            "linked_at": {},
+            "linked_by": "69bb9e6e37566079537222a4"
+          },
+          {
+            "resource_type": "event_app",
+            "resource_id": "evt_app_6a958080019d2fe38b5fb3c8",
+            "name": "Bluu Event",
+            "permissions": [
+              "publish",
+              "subscribe",
+              "read",
+              "manage"
+            ],
+            "linked_at": {},
+            "linked_by": "69bb9e6e37566079537222a4"
+          },
+          {
+            "resource_type": "oauth_app",
+            "resource_id": "oauth_app_6a9884a634b55136339f22d4",
+            "name": "BluuPay",
+            "permissions": [
+              "connect",
+              "token",
+              "read",
+              "manage"
+            ],
+            "linked_at": {},
+            "linked_by": "69bb9e6e37566079537222a4"
+          },
+          {
+            "resource_type": "gateway",
+            "resource_id": "6a9be21ab45d1eb658f0e582",
+            "name": "Bluu",
+            "permissions": [
+              "invoke",
+              "read",
+              "manage"
+            ],
+            "linked_at": {},
+            "linked_by": "69bb9e6e37566079537222a4"
+          },
+          {
+            "resource_type": "commercial_app",
+            "resource_id": "com_app_6a957a43b94ce10fa639c21d",
+            "name": "Bluu",
+            "permissions": [
+              "check",
+              "consume",
+              "state",
+              "customers",
+              "plans",
+              "features",
+              "subscriptions",
+              "payments",
+              "invoices",
+              "seats",
+              "licenses",
+              "events",
+              "analytics",
+              "ledger",
+              "credit",
+              "debit",
+              "transfer",
+              "reverse",
+              "holds",
+              "units",
+              "exchange",
+              "manage"
+            ],
+            "linked_at": {},
+            "linked_by": "69bb9e6e37566079537222a4"
+          },
+          {
+            "resource_type": "provider_app",
+            "resource_id": "psv_app_6aa9665fb37cd4ca20c3bc81",
+            "name": "Payment Collectors",
+            "permissions": [
+              "execute",
+              "read",
+              "manage"
+            ],
+            "linked_at": {},
+            "linked_by": "69bb9e6e37566079537222a4"
+          }
+        ],
+        "__v": 0,
+        "project_id": "69d663cefef44ab5d72c7fc4"
+      }
+    },
+    {
+      "kind": "provider",
+      "source_id": "psv_app_6aa9665fb37cd4ca20c3bc81",
+      "name": "Payment Collectors",
+      "slug": "payment-collectors",
+      "description": "Colleect Payments. and Map Providers",
+      "status": "active",
+      "definition": {
+        "name": "Payment Collectors",
+        "slug": "payment-collectors",
+        "description": "Colleect Payments. and Map Providers",
+        "status": "active",
+        "__v": 0,
+        "project_id": "69d663cefef44ab5d72c7fc4"
+      },
+      "catalog": {
+        "services": [
+          {
+            "key": "initiate",
+            "name": "Process Payments",
+            "description": "Initiate Payments",
+            "operations": [
+              {
+                "key": "verify_payment",
+                "name": "Verify Payment",
+                "current_version": "v1",
+                "versions": [
+                  {
+                    "version": "v1",
+                    "input_schema": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "output_schema": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "errors": []
+                  }
+                ]
+              },
+              {
+                "key": "intiate_payment",
+                "name": "Intiate Payment",
+                "current_version": "v1",
+                "versions": [
+                  {
+                    "version": "v1",
+                    "input_schema": {
+                      "type": "object",
+                      "properties": {
+                        "amount": {
+                          "type": "string",
+                          "description": "Amount To Process"
+                        },
+                        "ref": {
+                          "type": "string",
+                          "description": "Reference Unique per Trs"
+                        },
+                        "email": {
+                          "type": "string",
+                          "description": "Email of Recep"
+                        },
+                        "currency": {
+                          "type": "string",
+                          "description": "The Currency"
+                        },
+                        "callback": {
+                          "type": "string",
+                          "description": "The Cllback"
+                        },
+                        "phone": {
+                          "type": "string",
+                          "description": "[hone number"
+                        }
+                      },
+                      "required": [
+                        "amount",
+                        "ref"
+                      ]
+                    },
+                    "output_schema": {
+                      "type": "object",
+                      "properties": {
+                        "url": {
+                          "type": "string",
+                          "description": "Checkout Url"
+                        },
+                        "reference": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "errors": [
+                      {
+                        "code": "Timeout",
+                        "kind": "retryable"
+                      }
+                    ],
+                    "async": false,
+                    "idempotency_required": false
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "key": "verification",
+            "name": "Verification",
+            "operations": []
+          }
+        ]
+      }
+    },
+    {
+      "kind": "provider",
+      "source_id": "psv_app_6aaa5ae41046aa4f32444f50",
+      "name": "kyc r",
+      "slug": "kyc-r",
+      "status": "active",
+      "definition": {
+        "name": "kyc r",
+        "slug": "kyc-r",
+        "status": "active",
+        "__v": 0,
+        "project_id": "69d663cefef44ab5d72c7fc4"
+      },
+      "catalog": {
+        "services": [
+          {
+            "key": "kyc",
+            "name": "Kyc",
+            "operations": [
+              {
+                "key": "verify",
+                "name": "Verify",
+                "current_version": "v1",
+                "versions": [
+                  {
+                    "version": "v1",
+                    "input_schema": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        },
+                        "email": {
+                          "type": "string"
+                        },
+                        "bvn": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "output_schema": {
+                      "type": "object",
+                      "properties": {
+                        "verified": {
+                          "type": "string"
+                        },
+                        "fales": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "errors": [],
+                    "async": false,
+                    "idempotency_required": false
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "kind": "provider",
+      "source_id": "psv_app_6aaf330ca20f3ce55813db13",
+      "name": "Jrt",
+      "slug": "jrt",
+      "status": "active",
+      "definition": {
+        "project_id": "69d663cefef44ab5d72c7fc4",
+        "name": "Jrt",
+        "slug": "jrt",
+        "status": "active",
+        "__v": 0
+      },
+      "catalog": {
+        "services": []
+      }
     }
   ]
 }
