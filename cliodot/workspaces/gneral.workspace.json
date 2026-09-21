@@ -1,7 +1,7 @@
 {
   "kind": "cliodot.workspace",
   "version": 1,
-  "exported_at": "2026-09-20T22:38:44.586Z",
+  "exported_at": "2026-09-21T06:30:55.369Z",
   "source": {
     "tenant_id": "34416d05-bdae-45ae-8f4c-a6e3eea4e2ec",
     "project_id": "69d663cefef44ab5d72c7fc4",
@@ -247377,8 +247377,27 @@
         "__v": 0
       },
       "catalog": {
+        "policies": [
+          {
+            "name": "First Prov Policy",
+            "rules": {
+              "rate_limit_rpm": 2,
+              "max_concurrent": 1,
+              "max_body_bytes": 1048576,
+              "allowed_methods": [
+                "POST"
+              ],
+              "ip_allowlist": [],
+              "host_allowlist": [],
+              "user_agent_allowlist": [],
+              "user_agent_denylist": []
+            },
+            "status": "active"
+          }
+        ],
         "endpoints": [
           {
+            "source_id": "wh_ep_6a94c6e514215eec803a0ef4",
             "name": "ClioBlu",
             "slug": "clioblu",
             "verify_template_id": "none",
@@ -247393,9 +247412,11 @@
               "host_allowlist": [],
               "user_agent_allowlist": [],
               "user_agent_denylist": []
-            }
+            },
+            "status": "active"
           },
           {
+            "source_id": "wh_ep_6a69fbfef55f83b38e8ed530",
             "name": "Stripe Payment",
             "slug": "stripe-payment",
             "verify_template_id": "none",
@@ -247410,7 +247431,23 @@
               "host_allowlist": [],
               "user_agent_allowlist": [],
               "user_agent_denylist": []
-            }
+            },
+            "ingress_policy_name": "First Prov Policy",
+            "status": "active"
+          }
+        ],
+        "destinations": [
+          {
+            "endpoint_slug": "stripe-payment",
+            "name": "usehook",
+            "channel": "webhook",
+            "target": {
+              "url": "https://usewebhook.com/69c752aaa91f14704292496512bc7346"
+            },
+            "condition": {
+              "rules": []
+            },
+            "status": "active"
           }
         ]
       }
@@ -247429,8 +247466,10 @@
         "project_id": "69d663cefef44ab5d72c7fc4"
       },
       "catalog": {
+        "policies": [],
         "endpoints": [
           {
+            "source_id": "wh_ep_6a98a0fa98516da91434fdb3",
             "name": "Create Account",
             "slug": "create-account",
             "verify_template_id": "none",
@@ -247445,7 +247484,34 @@
               "host_allowlist": [],
               "user_agent_allowlist": [],
               "user_agent_denylist": []
-            }
+            },
+            "schema": {},
+            "status": "active"
+          }
+        ],
+        "destinations": [
+          {
+            "endpoint_slug": "create-account",
+            "name": "create open",
+            "channel": "workflow",
+            "target": {
+              "workflow_group_id": "6a958493019d2fe38b5fb5e4",
+              "trigger_id": "trigger-3-1788183424927",
+              "workflow_id": "6a958493019d2fe38b5fb5e4_trigger-3-1788183424927",
+              "environment": "dev"
+            },
+            "condition": {
+              "logic": "and",
+              "rules": [
+                {
+                  "source": "body",
+                  "path": "type",
+                  "op": "eq",
+                  "value": "account.opened"
+                }
+              ]
+            },
+            "status": "active"
           }
         ]
       }
@@ -247467,51 +247533,23 @@
           "period": 30,
           "algorithm": "sha1",
           "window": 1,
-          "issuer": "Haun",
-          "_id": {
-            "buffer": {
-              "0": 106,
-              "1": 104,
-              "2": 140,
-              "3": 43,
-              "4": 66,
-              "5": 20,
-              "6": 179,
-              "7": 187,
-              "8": 174,
-              "9": 118,
-              "10": 124,
-              "11": 250
-            }
-          }
+          "issuer": "Haun"
         },
         "security_policy": {
           "max_attempts": 5,
           "lockout_minutes": 15,
           "enroll_ttl_minutes": 15,
-          "recovery_code_count": 10,
-          "_id": {
-            "buffer": {
-              "0": 106,
-              "1": 104,
-              "2": 140,
-              "3": 43,
-              "4": 66,
-              "5": 20,
-              "6": 179,
-              "7": 187,
-              "8": 174,
-              "9": 118,
-              "10": 124,
-              "11": 251
-            }
-          }
+          "recovery_code_count": 10
         },
         "enabled_methods": [
           "totp"
         ],
         "__v": 0,
         "project_id": "69d663cefef44ab5d72c7fc4"
+      },
+      "catalog": {
+        "delivery_templates": [],
+        "message_templates": []
       }
     },
     {
@@ -247529,45 +247567,13 @@
           "period": 30,
           "algorithm": "sha1",
           "window": 1,
-          "issuer": "BluuPay",
-          "_id": {
-            "buffer": {
-              "0": 106,
-              "1": 152,
-              "2": 119,
-              "3": 1,
-              "4": 211,
-              "5": 4,
-              "6": 80,
-              "7": 169,
-              "8": 4,
-              "9": 182,
-              "10": 57,
-              "11": 232
-            }
-          }
+          "issuer": "BluuPay"
         },
         "security_policy": {
           "max_attempts": 5,
           "lockout_minutes": 15,
           "enroll_ttl_minutes": 15,
-          "recovery_code_count": 10,
-          "_id": {
-            "buffer": {
-              "0": 106,
-              "1": 152,
-              "2": 119,
-              "3": 1,
-              "4": 211,
-              "5": 4,
-              "6": 80,
-              "7": 169,
-              "8": 4,
-              "9": 182,
-              "10": 57,
-              "11": 229
-            }
-          }
+          "recovery_code_count": 10
         },
         "enabled_methods": [
           "totp",
@@ -247583,23 +247589,7 @@
           "ttl_seconds": 600,
           "resend_mode": "queue",
           "resend_interval_seconds": 60,
-          "resend_queue_max": 10,
-          "_id": {
-            "buffer": {
-              "0": 106,
-              "1": 131,
-              "2": 14,
-              "3": 97,
-              "4": 168,
-              "5": 90,
-              "6": 101,
-              "7": 146,
-              "8": 131,
-              "9": 87,
-              "10": 50,
-              "11": 210
-            }
-          }
+          "resend_queue_max": 10
         },
         "email_otp_delivery": {
           "delivery_template_id": "auth_dlv_tpl_6a50230419389ada13fc9d40",
@@ -247639,25 +247629,48 @@
           "max_attempts": 5,
           "verification_url_base": " http://localhost:5173/magic-link",
           "success_redirect_url": " http://localhost:5173",
-          "failure_redirect_url": " http://localhost:5173",
-          "_id": {
-            "buffer": {
-              "0": 106,
-              "1": 131,
-              "2": 18,
-              "3": 196,
-              "4": 168,
-              "5": 90,
-              "6": 101,
-              "7": 146,
-              "8": 131,
-              "9": 87,
-              "10": 51,
-              "11": 86
-            }
-          }
+          "failure_redirect_url": " http://localhost:5173"
         },
         "project_id": "69d663cefef44ab5d72c7fc4"
+      },
+      "catalog": {
+        "delivery_templates": [
+          {
+            "source_id": "auth_dlv_tpl_6a50230419389ada13fc9d40",
+            "name": "SMTP Configurator",
+            "slug": "smtp-configurator",
+            "category": "email",
+            "connector_id": "smtp.system",
+            "connector_name": "SMTP Email",
+            "action_id": "smtp.send",
+            "action_name": "Send Email",
+            "action_inputs": {
+              "to": "string",
+              "subject": "string",
+              "text": "string",
+              "html": "string",
+              "cc": "array",
+              "bcc": "array",
+              "reply_to": "string",
+              "attachments": "array"
+            },
+            "action_ui": {
+              "builder": "email.composer"
+            },
+            "status": "active"
+          }
+        ],
+        "message_templates": [
+          {
+            "source_id": "auth_msg_tpl_6a830d88a85a65928357321b",
+            "name": "Email Code",
+            "slug": "email.code",
+            "category": "email",
+            "subject": "Email Verification",
+            "body_html": "{{code}}\n{{magic_link_url}}\n{{magic_link_expiration_minutes}}",
+            "status": "active"
+          }
+        ]
       }
     },
     {
@@ -247675,68 +247688,40 @@
           "period": 30,
           "algorithm": "sha1",
           "window": 1,
-          "issuer": "Authentication",
-          "_id": {
-            "buffer": {
-              "0": 106,
-              "1": 116,
-              "2": 195,
-              "3": 15,
-              "4": 158,
-              "5": 55,
-              "6": 195,
-              "7": 126,
-              "8": 75,
-              "9": 184,
-              "10": 0,
-              "11": 95
-            }
-          }
+          "issuer": "Authentication"
         },
         "security_policy": {
           "max_attempts": 5,
           "lockout_minutes": 15,
           "enroll_ttl_minutes": 15,
-          "recovery_code_count": 10,
-          "_id": {
-            "buffer": {
-              "0": 106,
-              "1": 116,
-              "2": 195,
-              "3": 15,
-              "4": 158,
-              "5": 55,
-              "6": 195,
-              "7": 126,
-              "8": 75,
-              "9": 184,
-              "10": 0,
-              "11": 96
-            }
-          }
+          "recovery_code_count": 10
         },
         "enabled_methods": [
           "totp"
         ],
         "__v": 0,
         "project_id": "69d663cefef44ab5d72c7fc4"
+      },
+      "catalog": {
+        "delivery_templates": [],
+        "message_templates": []
       }
     },
     {
       "kind": "oauth",
-      "source_id": "oauth_app_6a9884a634b55136339f22d4",
-      "name": "BluuPay",
-      "slug": "bluupay",
+      "source_id": "oauth_app_6a4ede6e732735638a8a7391",
+      "name": "Zer",
+      "slug": "zer",
       "status": "active",
       "definition": {
-        "name": "BluuPay",
-        "slug": "bluupay",
+        "name": "Zer",
+        "slug": "zer",
         "status": "active",
         "redirect_uris": [
-          "http://localhost:5173/oauth/google"
+          "http://localhost:3000/oauth-apps"
         ],
         "allowed_origins": [],
-        "token_exposure_policy": "metadata_only",
+        "token_exposure_policy": "include_access_token",
         "pkce_policy": "required",
         "exchange_code_ttl_seconds": 60,
         "connection_storage": "persistent",
@@ -247746,19 +247731,15 @@
       "catalog": {
         "providers": [
           {
-            "alias": "google",
-            "display_name": "Google",
-            "source_type": "template",
+            "alias": "calender",
+            "display_name": "Google Calender",
+            "source_type": "connector",
             "protocol": "oauth2",
-            "template_id": "oauth_tpl_6a822881563fa6a3492c9be1",
-            "credential_mode": "template_default",
+            "connector_id": "6a3e9553f470e4622da97f63",
+            "credential_mode": "customer_owned",
             "scope_policy": "connector_default",
             "scopes": [],
-            "selected_scopes": [
-              "openid",
-              "email",
-              "profile"
-            ],
+            "selected_scopes": [],
             "pkce_override": "inherit"
           }
         ]
@@ -247818,6 +247799,31 @@
             "source_type": "template",
             "protocol": "oauth2",
             "template_id": "oauth_tpl_6a4e4e1c4af14712a598786b",
+            "oauth_config_snapshot": {
+              "protocol": "oauth2",
+              "type": "oauth2",
+              "scopes": [
+                "read:user",
+                "user:email"
+              ],
+              "oauth2": {
+                "authorization_url": "https://github.com/login/oauth/authorize",
+                "token_url": "https://github.com/login/oauth/access_token",
+                "userinfo_url": "https://api.github.com/user",
+                "grant_type": "authorization_code",
+                "auth_method": "client_secret_post",
+                "is_google_provider": false,
+                "pkce": {
+                  "enabled": true,
+                  "code_challenge_method": "S256"
+                },
+                "refresh_token_supported": false,
+                "scopes": [
+                  "read:user",
+                  "user:email"
+                ]
+              }
+            },
             "credential_mode": "customer_owned",
             "scope_policy": "connector_default",
             "scopes": [],
@@ -247833,6 +247839,33 @@
             "source_type": "template",
             "protocol": "oauth2",
             "template_id": "oauth_tpl_6a822881563fa6a3492c9be1",
+            "oauth_config_snapshot": {
+              "protocol": "oauth2",
+              "type": "oauth2",
+              "scopes": [
+                "openid",
+                "email",
+                "profile"
+              ],
+              "oauth2": {
+                "authorization_url": "https://accounts.google.com/o/oauth2/v2/auth",
+                "token_url": "https://oauth2.googleapis.com/token",
+                "userinfo_url": "https://openidconnect.googleapis.com/v1/userinfo",
+                "grant_type": "authorization_code",
+                "auth_method": "client_secret_post",
+                "is_google_provider": false,
+                "pkce": {
+                  "enabled": true,
+                  "code_challenge_method": "S256"
+                },
+                "refresh_token_supported": true,
+                "scopes": [
+                  "openid",
+                  "email",
+                  "profile"
+                ]
+              }
+            },
             "credential_mode": "template_default",
             "scope_policy": "connector_default",
             "scopes": [],
@@ -247848,19 +247881,19 @@
     },
     {
       "kind": "oauth",
-      "source_id": "oauth_app_6a4ede6e732735638a8a7391",
-      "name": "Zer",
-      "slug": "zer",
+      "source_id": "oauth_app_6a9884a634b55136339f22d4",
+      "name": "BluuPay",
+      "slug": "bluupay",
       "status": "active",
       "definition": {
-        "name": "Zer",
-        "slug": "zer",
+        "name": "BluuPay",
+        "slug": "bluupay",
         "status": "active",
         "redirect_uris": [
-          "http://localhost:3000/oauth-apps"
+          "http://localhost:5173/oauth/google"
         ],
         "allowed_origins": [],
-        "token_exposure_policy": "include_access_token",
+        "token_exposure_policy": "metadata_only",
         "pkce_policy": "required",
         "exchange_code_ttl_seconds": 60,
         "connection_storage": "persistent",
@@ -247870,15 +247903,46 @@
       "catalog": {
         "providers": [
           {
-            "alias": "calender",
-            "display_name": "Google Calender",
-            "source_type": "connector",
+            "alias": "google",
+            "display_name": "Google",
+            "source_type": "template",
             "protocol": "oauth2",
-            "connector_id": "6a3e9553f470e4622da97f63",
-            "credential_mode": "customer_owned",
+            "template_id": "oauth_tpl_6a822881563fa6a3492c9be1",
+            "oauth_config_snapshot": {
+              "protocol": "oauth2",
+              "type": "oauth2",
+              "scopes": [
+                "openid",
+                "email",
+                "profile"
+              ],
+              "oauth2": {
+                "authorization_url": "https://accounts.google.com/o/oauth2/v2/auth",
+                "token_url": "https://oauth2.googleapis.com/token",
+                "userinfo_url": "https://openidconnect.googleapis.com/v1/userinfo",
+                "grant_type": "authorization_code",
+                "auth_method": "client_secret_post",
+                "is_google_provider": false,
+                "pkce": {
+                  "enabled": true,
+                  "code_challenge_method": "S256"
+                },
+                "refresh_token_supported": true,
+                "scopes": [
+                  "openid",
+                  "email",
+                  "profile"
+                ]
+              }
+            },
+            "credential_mode": "template_default",
             "scope_policy": "connector_default",
             "scopes": [],
-            "selected_scopes": [],
+            "selected_scopes": [
+              "openid",
+              "email",
+              "profile"
+            ],
             "pkce_override": "inherit"
           }
         ]
@@ -247903,17 +247967,17 @@
           {
             "currency": "NGN",
             "rate_to_reporting": 0.00054,
-            "as_of": {}
+            "as_of": "2026-08-12T00:00:00.000Z"
           },
           {
             "currency": "GBP",
             "rate_to_reporting": 1,
-            "as_of": {}
+            "as_of": "2026-08-12T00:00:00.000Z"
           },
           {
             "currency": "EUR",
             "rate_to_reporting": 0.85,
-            "as_of": {}
+            "as_of": "2026-08-12T00:00:00.000Z"
           },
           {
             "currency": "USD",
@@ -248382,8 +248446,8 @@
             "applies_to_plans": [
               "free"
             ],
-            "starts_at": {},
-            "ends_at": {},
+            "starts_at": "2026-07-30T18:05:00.000Z",
+            "ends_at": "2026-08-12T17:06:00.000Z",
             "active": false,
             "__v": 0
           },
@@ -248402,8 +248466,8 @@
               "hafg",
               "pro"
             ],
-            "starts_at": {},
-            "ends_at": {},
+            "starts_at": "2026-08-23T21:57:00.000Z",
+            "ends_at": "2026-08-25T21:57:00.000Z",
             "active": true,
             "__v": 0
           }
@@ -248442,7 +248506,2172 @@
             "active": true,
             "__v": 0
           }
-        ]
+        ],
+        "destinations": [
+          {
+            "name": "On Account Open",
+            "channel": "workflow",
+            "event_types": [
+              "account.opened"
+            ],
+            "target": {
+              "workflow_id": "6a958493019d2fe38b5fb5e4_trigger-3-1788183424927",
+              "workflow_group_id": "6a958493019d2fe38b5fb5e4",
+              "trigger_id": "trigger-3-1788183424927",
+              "environment": "dev"
+            },
+            "status": "active"
+          }
+        ],
+        "payment_methods": [
+          {
+            "key": "paystack",
+            "name": "Paystack",
+            "connector_id": "6a1f174b28f02dbef8973d42",
+            "action_id": "Initialize Transaction",
+            "connector_name": "Paystack",
+            "action_name": "Initialize Transaction",
+            "action_inputs": {
+              "email": {
+                "type": "string",
+                "required": true
+              },
+              "amount": {
+                "type": "string",
+                "required": true
+              },
+              "currency": {
+                "type": "string",
+                "required": true
+              },
+              "reference": {
+                "type": "string",
+                "required": true
+              },
+              "callback_url": {
+                "type": "string",
+                "required": true
+              },
+              "plan": {
+                "type": "string",
+                "required": true
+              },
+              "invoice_limit": {
+                "type": "string",
+                "required": true
+              },
+              "metadata": {
+                "type": "string",
+                "required": true
+              },
+              "channels": {
+                "type": "string",
+                "required": true
+              },
+              "split_code": {
+                "type": "string",
+                "required": true
+              },
+              "subaccount": {
+                "type": "string",
+                "required": true
+              },
+              "transaction_charge": {
+                "type": "string",
+                "required": true
+              },
+              "bearer": {
+                "type": "string",
+                "required": true
+              }
+            },
+            "enabled": true,
+            "is_default": false,
+            "renewal_mode": "platform",
+            "apply_discount_before_charge": false,
+            "input_mappings": {
+              "email": {
+                "source": "context",
+                "path": "customer.email"
+              },
+              "amount": {
+                "source": "context",
+                "path": "amount"
+              },
+              "currency": {
+                "source": "context",
+                "path": "currency"
+              },
+              "reference": {
+                "source": "input",
+                "key": "reference"
+              },
+              "callback_url": {
+                "source": "static",
+                "value": "http://localhost:3000"
+              }
+            },
+            "installation_id": "6a1f17ae28f02dbef8973ef5"
+          },
+          {
+            "key": "stripe",
+            "name": "Stripe",
+            "connector_id": "6a1ef19509dde570abbd2e31",
+            "action_id": "Create a Session",
+            "connector_name": "⭐️ Stripe API [2024-04-10]",
+            "action_name": "Create a Session",
+            "action_inputs": {
+              "after_expiration": {
+                "type": "object",
+                "required": true,
+                "properties": {
+                  "recovery": {
+                    "type": "object",
+                    "required": true,
+                    "properties": {
+                      "enabled": {
+                        "type": "boolean",
+                        "required": false,
+                        "source": "disabled",
+                        "description": "Configure actions after a Checkout Session has expired."
+                      },
+                      "allow_promotion_codes": {
+                        "type": "boolean",
+                        "required": false,
+                        "source": "disabled",
+                        "description": "Configure actions after a Checkout Session has expired."
+                      }
+                    }
+                  }
+                }
+              },
+              "allow_promotion_codes": {
+                "type": "boolean",
+                "required": false,
+                "source": "disabled",
+                "description": "Enables user redeemable promotion codes."
+              },
+              "automatic_tax": {
+                "type": "object",
+                "required": true,
+                "properties": {
+                  "enabled": {
+                    "type": "boolean",
+                    "required": false,
+                    "source": "disabled",
+                    "description": "Settings for automatic tax lookup for this session and resulting payments, invoices, and subscriptions."
+                  },
+                  "liability": {
+                    "type": "object",
+                    "required": true,
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "required": false,
+                        "source": "disabled",
+                        "description": "Settings for automatic tax lookup for this session and resulting payments, invoices, and subscriptions."
+                      },
+                      "account": {
+                        "type": "string",
+                        "required": false,
+                        "source": "disabled",
+                        "description": "Settings for automatic tax lookup for this session and resulting payments, invoices, and subscriptions."
+                      }
+                    }
+                  }
+                }
+              },
+              "billing_address_collection": {
+                "type": "string",
+                "required": false,
+                "source": "disabled",
+                "description": "Specify whether Checkout should collect the customer's billing address. Defaults to `auto`."
+              },
+              "cancel_url": {
+                "type": "string",
+                "required": false,
+                "source": "disabled",
+                "description": "If set, Checkout displays a back button and customers will be directed to this URL if they decide to cancel payment and return to your website."
+              },
+              "client_reference_id": {
+                "type": "string",
+                "required": false,
+                "source": "disabled",
+                "description": "A unique string to reference the Checkout Session. This can be a\ncustomer ID, a cart ID, or similar, and can be used to reconcile the\nsession with your internal systems."
+              },
+              "consent_collection": {
+                "type": "object",
+                "required": true,
+                "properties": {
+                  "payment_method_reuse_agreement": {
+                    "type": "object",
+                    "required": true,
+                    "properties": {
+                      "position": {
+                        "type": "string",
+                        "required": false,
+                        "source": "disabled",
+                        "description": "Configure fields for the Checkout Session to gather active consent from customers."
+                      }
+                    }
+                  },
+                  "promotions": {
+                    "type": "string",
+                    "required": false,
+                    "source": "disabled",
+                    "description": "Configure fields for the Checkout Session to gather active consent from customers."
+                  },
+                  "terms_of_service": {
+                    "type": "string",
+                    "required": false,
+                    "source": "disabled",
+                    "description": "Configure fields for the Checkout Session to gather active consent from customers."
+                  }
+                }
+              },
+              "currency": {
+                "type": "string",
+                "required": false,
+                "source": "disabled",
+                "description": "Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://stripe.com/docs/currencies). Required in `setup` mode when `payment_method_types` is not set."
+              },
+              "custom_fields": {
+                "type": "array",
+                "required": true,
+                "items": {
+                  "type": "object",
+                  "required": true,
+                  "properties": {
+                    "key": {
+                      "type": "string",
+                      "required": false,
+                      "source": "disabled",
+                      "description": "Collect additional information from your customer using custom fields. Up to 3 fields are supported."
+                    },
+                    "label": {
+                      "type": "object",
+                      "required": true,
+                      "properties": {
+                        "custom": {
+                          "type": "string",
+                          "required": false,
+                          "source": "disabled",
+                          "description": "Collect additional information from your customer using custom fields. Up to 3 fields are supported."
+                        },
+                        "type": {
+                          "type": "string",
+                          "required": false,
+                          "source": "disabled",
+                          "description": "Collect additional information from your customer using custom fields. Up to 3 fields are supported."
+                        }
+                      }
+                    },
+                    "type": {
+                      "type": "string",
+                      "required": false,
+                      "source": "disabled",
+                      "description": "Collect additional information from your customer using custom fields. Up to 3 fields are supported."
+                    },
+                    "dropdown": {
+                      "type": "object",
+                      "required": true,
+                      "properties": {
+                        "options": {
+                          "type": "array",
+                          "required": true,
+                          "items": {
+                            "type": "object",
+                            "required": true,
+                            "properties": {
+                              "label": {
+                                "type": "string",
+                                "required": false,
+                                "source": "disabled",
+                                "description": "Collect additional information from your customer using custom fields. Up to 3 fields are supported."
+                              },
+                              "value": {
+                                "type": "string",
+                                "required": false,
+                                "source": "disabled",
+                                "description": "Collect additional information from your customer using custom fields. Up to 3 fields are supported."
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "numeric": {
+                      "type": "object",
+                      "required": true,
+                      "properties": {
+                        "maximum_length": {
+                          "type": "number",
+                          "required": false,
+                          "source": "disabled",
+                          "description": "Collect additional information from your customer using custom fields. Up to 3 fields are supported."
+                        },
+                        "minimum_length": {
+                          "type": "number",
+                          "required": false,
+                          "source": "disabled",
+                          "description": "Collect additional information from your customer using custom fields. Up to 3 fields are supported."
+                        }
+                      }
+                    },
+                    "optional": {
+                      "type": "boolean",
+                      "required": false,
+                      "source": "disabled",
+                      "description": "Collect additional information from your customer using custom fields. Up to 3 fields are supported."
+                    },
+                    "text": {
+                      "type": "object",
+                      "required": true,
+                      "properties": {
+                        "maximum_length": {
+                          "type": "number",
+                          "required": false,
+                          "source": "disabled",
+                          "description": "Collect additional information from your customer using custom fields. Up to 3 fields are supported."
+                        },
+                        "minimum_length": {
+                          "type": "number",
+                          "required": false,
+                          "source": "disabled",
+                          "description": "Collect additional information from your customer using custom fields. Up to 3 fields are supported."
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "custom_text": {
+                "type": "object",
+                "required": true,
+                "properties": {
+                  "after_submit": {
+                    "type": "object",
+                    "required": true,
+                    "properties": {
+                      "message": {
+                        "type": "string",
+                        "required": false,
+                        "source": "disabled",
+                        "description": "Display additional text for your customers using custom text."
+                      }
+                    }
+                  },
+                  "shipping_address": {
+                    "type": "object",
+                    "required": true,
+                    "properties": {
+                      "message": {
+                        "type": "string",
+                        "required": false,
+                        "source": "disabled",
+                        "description": "Display additional text for your customers using custom text."
+                      }
+                    }
+                  },
+                  "submit": {
+                    "type": "object",
+                    "required": true,
+                    "properties": {
+                      "message": {
+                        "type": "string",
+                        "required": false,
+                        "source": "disabled",
+                        "description": "Display additional text for your customers using custom text."
+                      }
+                    }
+                  },
+                  "terms_of_service_acceptance": {
+                    "type": "object",
+                    "required": true,
+                    "properties": {
+                      "message": {
+                        "type": "string",
+                        "required": false,
+                        "source": "disabled",
+                        "description": "Display additional text for your customers using custom text."
+                      }
+                    }
+                  }
+                }
+              },
+              "customer": {
+                "type": "string",
+                "required": false,
+                "source": "disabled",
+                "description": "ID of an existing Customer, if one exists. In `payment` mode, the customer’s most recently saved card\npayment method will be used to prefill the email, name, card details, and billing address\non the Checkout page. In `subscription` mode, the customer’s [default payment method](https://stripe.com/docs/api/customers/update#update_customer-invoice_settings-default_payment_method)\nwill be used if it’s a card, otherwise the most recently saved card will be used. A valid billing address, billing name and billing email are required on the payment method for Checkout to prefill the customer's card details.\n\nIf the Customer already has a valid [email](https://stripe.com/docs/api/customers/object#customer_object-email) set, the email will be prefilled and not editable in Checkout.\nIf the Customer does not have a valid `email`, Checkout will set the email entered during the session on the Customer.\n\nIf blank for Checkout Sessions in `subscription` mode or with `customer_creation` set as `always` in `payment` mode, Checkout will create a new Customer object based on information provided during the payment flow.\n\nYou can set [`payment_intent_data.setup_future_usage`](https://stripe.com/docs/api/checkout/sessions/create#create_checkout_session-payment_intent_data-setup_future_usage) to have Checkout automatically attach the payment method to the Customer you pass in for future reuse."
+              },
+              "customer_creation": {
+                "type": "string",
+                "required": false,
+                "source": "disabled",
+                "description": "Configure whether a Checkout Session creates a [Customer](https://stripe.com/docs/api/customers) during Session confirmation.\n\nWhen a Customer is not created, you can still retrieve email, address, and other customer data entered in Checkout\nwith [customer_details](https://stripe.com/docs/api/checkout/sessions/object#checkout_session_object-customer_details).\n\nSessions that don't create Customers instead are grouped by [guest customers](https://stripe.com/docs/payments/checkout/guest-customers)\nin the Dashboard. Promotion codes limited to first time customers will return invalid for these Sessions.\n\nCan only be set in `payment` and `setup` mode."
+              },
+              "customer_email": {
+                "type": "string",
+                "required": false,
+                "source": "disabled",
+                "description": "If provided, this value will be used when the Customer object is created.\nIf not provided, customers will be asked to enter their email address.\nUse this parameter to prefill customer data if you already have an email\non file. To access information about the customer once a session is\ncomplete, use the `customer` field."
+              },
+              "customer_update": {
+                "type": "object",
+                "required": true,
+                "properties": {
+                  "address": {
+                    "type": "string",
+                    "required": false,
+                    "source": "disabled",
+                    "description": "Controls what fields on Customer can be updated by the Checkout Session. Can only be provided when `customer` is provided."
+                  },
+                  "name": {
+                    "type": "string",
+                    "required": false,
+                    "source": "disabled",
+                    "description": "Controls what fields on Customer can be updated by the Checkout Session. Can only be provided when `customer` is provided."
+                  },
+                  "shipping": {
+                    "type": "string",
+                    "required": false,
+                    "source": "disabled",
+                    "description": "Controls what fields on Customer can be updated by the Checkout Session. Can only be provided when `customer` is provided."
+                  }
+                }
+              },
+              "discounts": {
+                "type": "array",
+                "required": true,
+                "items": {
+                  "type": "object",
+                  "required": true,
+                  "properties": {
+                    "coupon": {
+                      "type": "string",
+                      "required": false,
+                      "source": "disabled",
+                      "description": "The coupon or promotion code to apply to this Session. Currently, only up to one may be specified."
+                    },
+                    "promotion_code": {
+                      "type": "string",
+                      "required": false,
+                      "source": "disabled",
+                      "description": "The coupon or promotion code to apply to this Session. Currently, only up to one may be specified."
+                    }
+                  }
+                }
+              },
+              "expand": {
+                "type": "array",
+                "required": true,
+                "items": {
+                  "type": "string",
+                  "required": false,
+                  "source": "disabled",
+                  "description": "Specifies which fields in the response should be expanded."
+                }
+              },
+              "expires_at": {
+                "type": "string",
+                "required": false,
+                "source": "disabled",
+                "description": "The Epoch time in seconds at which the Checkout Session will expire. It can be anywhere from 30 minutes to 24 hours after Checkout Session creation. By default, this value is 24 hours from creation."
+              },
+              "invoice_creation": {
+                "type": "object",
+                "required": true,
+                "properties": {
+                  "enabled": {
+                    "type": "boolean",
+                    "required": false,
+                    "source": "disabled",
+                    "description": "Generate a post-purchase Invoice for one-time payments."
+                  },
+                  "invoice_data": {
+                    "type": "object",
+                    "required": true,
+                    "properties": {
+                      "account_tax_ids": {
+                        "type": "array",
+                        "required": true,
+                        "items": {
+                          "type": "string",
+                          "required": false,
+                          "source": "disabled",
+                          "description": "Generate a post-purchase Invoice for one-time payments."
+                        }
+                      },
+                      "custom_fields": {
+                        "type": "array",
+                        "required": true,
+                        "items": {
+                          "type": "object",
+                          "required": true,
+                          "properties": {
+                            "name": {
+                              "type": "string",
+                              "required": false,
+                              "source": "disabled",
+                              "description": "Generate a post-purchase Invoice for one-time payments."
+                            },
+                            "value": {
+                              "type": "string",
+                              "required": false,
+                              "source": "disabled",
+                              "description": "Generate a post-purchase Invoice for one-time payments."
+                            }
+                          }
+                        }
+                      },
+                      "footer": {
+                        "type": "string",
+                        "required": false,
+                        "source": "disabled",
+                        "description": "Generate a post-purchase Invoice for one-time payments."
+                      },
+                      "issuer": {
+                        "type": "object",
+                        "required": true,
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "required": false,
+                            "source": "disabled",
+                            "description": "Generate a post-purchase Invoice for one-time payments."
+                          },
+                          "account": {
+                            "type": "string",
+                            "required": false,
+                            "source": "disabled",
+                            "description": "Generate a post-purchase Invoice for one-time payments."
+                          }
+                        }
+                      },
+                      "metadata": {
+                        "type": "object",
+                        "required": false,
+                        "source": "disabled",
+                        "description": "Generate a post-purchase Invoice for one-time payments."
+                      },
+                      "rendering_options": {
+                        "type": "object",
+                        "required": true,
+                        "properties": {
+                          "amount_tax_display": {
+                            "type": "string",
+                            "required": false,
+                            "source": "disabled",
+                            "description": "Generate a post-purchase Invoice for one-time payments."
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "line_items": {
+                "type": "array",
+                "required": true,
+                "items": {
+                  "type": "object",
+                  "required": true,
+                  "properties": {
+                    "adjustable_quantity": {
+                      "type": "object",
+                      "required": true,
+                      "properties": {
+                        "enabled": {
+                          "type": "boolean",
+                          "required": false,
+                          "source": "disabled",
+                          "description": "A list of items the customer is purchasing. Use this parameter to pass one-time or recurring [Prices](https://stripe.com/docs/api/prices).\n\nFor `payment` mode, there is a maximum of 100 line items, however it is recommended to consolidate line items if there are more than a few dozen.\n\nFor `subscription` mode, there is a maximum of 20 line items with recurring Prices and 20 line items with one-time Prices. Line items with one-time Prices will be on the initial invoice only."
+                        },
+                        "maximum": {
+                          "type": "number",
+                          "required": false,
+                          "source": "disabled",
+                          "description": "A list of items the customer is purchasing. Use this parameter to pass one-time or recurring [Prices](https://stripe.com/docs/api/prices).\n\nFor `payment` mode, there is a maximum of 100 line items, however it is recommended to consolidate line items if there are more than a few dozen.\n\nFor `subscription` mode, there is a maximum of 20 line items with recurring Prices and 20 line items with one-time Prices. Line items with one-time Prices will be on the initial invoice only."
+                        },
+                        "minimum": {
+                          "type": "number",
+                          "required": false,
+                          "source": "disabled",
+                          "description": "A list of items the customer is purchasing. Use this parameter to pass one-time or recurring [Prices](https://stripe.com/docs/api/prices).\n\nFor `payment` mode, there is a maximum of 100 line items, however it is recommended to consolidate line items if there are more than a few dozen.\n\nFor `subscription` mode, there is a maximum of 20 line items with recurring Prices and 20 line items with one-time Prices. Line items with one-time Prices will be on the initial invoice only."
+                        }
+                      }
+                    },
+                    "dynamic_tax_rates": {
+                      "type": "array",
+                      "required": true,
+                      "items": {
+                        "type": "string",
+                        "required": false,
+                        "source": "disabled",
+                        "description": "A list of items the customer is purchasing. Use this parameter to pass one-time or recurring [Prices](https://stripe.com/docs/api/prices).\n\nFor `payment` mode, there is a maximum of 100 line items, however it is recommended to consolidate line items if there are more than a few dozen.\n\nFor `subscription` mode, there is a maximum of 20 line items with recurring Prices and 20 line items with one-time Prices. Line items with one-time Prices will be on the initial invoice only."
+                      }
+                    },
+                    "price": {
+                      "type": "string",
+                      "required": false,
+                      "source": "disabled",
+                      "description": "A list of items the customer is purchasing. Use this parameter to pass one-time or recurring [Prices](https://stripe.com/docs/api/prices).\n\nFor `payment` mode, there is a maximum of 100 line items, however it is recommended to consolidate line items if there are more than a few dozen.\n\nFor `subscription` mode, there is a maximum of 20 line items with recurring Prices and 20 line items with one-time Prices. Line items with one-time Prices will be on the initial invoice only."
+                    },
+                    "price_data": {
+                      "type": "object",
+                      "required": true,
+                      "properties": {
+                        "currency": {
+                          "type": "string",
+                          "required": false,
+                          "source": "disabled",
+                          "description": "A list of items the customer is purchasing. Use this parameter to pass one-time or recurring [Prices](https://stripe.com/docs/api/prices).\n\nFor `payment` mode, there is a maximum of 100 line items, however it is recommended to consolidate line items if there are more than a few dozen.\n\nFor `subscription` mode, there is a maximum of 20 line items with recurring Prices and 20 line items with one-time Prices. Line items with one-time Prices will be on the initial invoice only."
+                        },
+                        "product": {
+                          "type": "string",
+                          "required": false,
+                          "source": "disabled",
+                          "description": "A list of items the customer is purchasing. Use this parameter to pass one-time or recurring [Prices](https://stripe.com/docs/api/prices).\n\nFor `payment` mode, there is a maximum of 100 line items, however it is recommended to consolidate line items if there are more than a few dozen.\n\nFor `subscription` mode, there is a maximum of 20 line items with recurring Prices and 20 line items with one-time Prices. Line items with one-time Prices will be on the initial invoice only."
+                        },
+                        "product_data": {
+                          "type": "object",
+                          "required": true,
+                          "properties": {
+                            "name": {
+                              "type": "string",
+                              "required": false,
+                              "source": "disabled",
+                              "description": "A list of items the customer is purchasing. Use this parameter to pass one-time or recurring [Prices](https://stripe.com/docs/api/prices).\n\nFor `payment` mode, there is a maximum of 100 line items, however it is recommended to consolidate line items if there are more than a few dozen.\n\nFor `subscription` mode, there is a maximum of 20 line items with recurring Prices and 20 line items with one-time Prices. Line items with one-time Prices will be on the initial invoice only."
+                            },
+                            "images": {
+                              "type": "array",
+                              "required": true,
+                              "items": {
+                                "type": "string",
+                                "required": false,
+                                "source": "disabled",
+                                "description": "A list of items the customer is purchasing. Use this parameter to pass one-time or recurring [Prices](https://stripe.com/docs/api/prices).\n\nFor `payment` mode, there is a maximum of 100 line items, however it is recommended to consolidate line items if there are more than a few dozen.\n\nFor `subscription` mode, there is a maximum of 20 line items with recurring Prices and 20 line items with one-time Prices. Line items with one-time Prices will be on the initial invoice only."
+                              }
+                            },
+                            "metadata": {
+                              "type": "object",
+                              "required": false,
+                              "source": "disabled",
+                              "description": "A list of items the customer is purchasing. Use this parameter to pass one-time or recurring [Prices](https://stripe.com/docs/api/prices).\n\nFor `payment` mode, there is a maximum of 100 line items, however it is recommended to consolidate line items if there are more than a few dozen.\n\nFor `subscription` mode, there is a maximum of 20 line items with recurring Prices and 20 line items with one-time Prices. Line items with one-time Prices will be on the initial invoice only."
+                            },
+                            "tax_code": {
+                              "type": "string",
+                              "required": false,
+                              "source": "disabled",
+                              "description": "A list of items the customer is purchasing. Use this parameter to pass one-time or recurring [Prices](https://stripe.com/docs/api/prices).\n\nFor `payment` mode, there is a maximum of 100 line items, however it is recommended to consolidate line items if there are more than a few dozen.\n\nFor `subscription` mode, there is a maximum of 20 line items with recurring Prices and 20 line items with one-time Prices. Line items with one-time Prices will be on the initial invoice only."
+                            }
+                          }
+                        },
+                        "recurring": {
+                          "type": "object",
+                          "required": true,
+                          "properties": {
+                            "interval": {
+                              "type": "string",
+                              "required": false,
+                              "source": "disabled",
+                              "description": "A list of items the customer is purchasing. Use this parameter to pass one-time or recurring [Prices](https://stripe.com/docs/api/prices).\n\nFor `payment` mode, there is a maximum of 100 line items, however it is recommended to consolidate line items if there are more than a few dozen.\n\nFor `subscription` mode, there is a maximum of 20 line items with recurring Prices and 20 line items with one-time Prices. Line items with one-time Prices will be on the initial invoice only."
+                            },
+                            "interval_count": {
+                              "type": "number",
+                              "required": false,
+                              "source": "disabled",
+                              "description": "A list of items the customer is purchasing. Use this parameter to pass one-time or recurring [Prices](https://stripe.com/docs/api/prices).\n\nFor `payment` mode, there is a maximum of 100 line items, however it is recommended to consolidate line items if there are more than a few dozen.\n\nFor `subscription` mode, there is a maximum of 20 line items with recurring Prices and 20 line items with one-time Prices. Line items with one-time Prices will be on the initial invoice only."
+                            }
+                          }
+                        },
+                        "tax_behavior": {
+                          "type": "string",
+                          "required": false,
+                          "source": "disabled",
+                          "description": "A list of items the customer is purchasing. Use this parameter to pass one-time or recurring [Prices](https://stripe.com/docs/api/prices).\n\nFor `payment` mode, there is a maximum of 100 line items, however it is recommended to consolidate line items if there are more than a few dozen.\n\nFor `subscription` mode, there is a maximum of 20 line items with recurring Prices and 20 line items with one-time Prices. Line items with one-time Prices will be on the initial invoice only."
+                        },
+                        "unit_amount": {
+                          "type": "number",
+                          "required": false,
+                          "source": "disabled",
+                          "description": "A list of items the customer is purchasing. Use this parameter to pass one-time or recurring [Prices](https://stripe.com/docs/api/prices).\n\nFor `payment` mode, there is a maximum of 100 line items, however it is recommended to consolidate line items if there are more than a few dozen.\n\nFor `subscription` mode, there is a maximum of 20 line items with recurring Prices and 20 line items with one-time Prices. Line items with one-time Prices will be on the initial invoice only."
+                        },
+                        "unit_amount_decimal": {
+                          "type": "string",
+                          "required": false,
+                          "source": "disabled",
+                          "description": "A list of items the customer is purchasing. Use this parameter to pass one-time or recurring [Prices](https://stripe.com/docs/api/prices).\n\nFor `payment` mode, there is a maximum of 100 line items, however it is recommended to consolidate line items if there are more than a few dozen.\n\nFor `subscription` mode, there is a maximum of 20 line items with recurring Prices and 20 line items with one-time Prices. Line items with one-time Prices will be on the initial invoice only."
+                        }
+                      }
+                    },
+                    "quantity": {
+                      "type": "number",
+                      "required": false,
+                      "source": "disabled",
+                      "description": "A list of items the customer is purchasing. Use this parameter to pass one-time or recurring [Prices](https://stripe.com/docs/api/prices).\n\nFor `payment` mode, there is a maximum of 100 line items, however it is recommended to consolidate line items if there are more than a few dozen.\n\nFor `subscription` mode, there is a maximum of 20 line items with recurring Prices and 20 line items with one-time Prices. Line items with one-time Prices will be on the initial invoice only."
+                    },
+                    "tax_rates": {
+                      "type": "array",
+                      "required": true,
+                      "items": {
+                        "type": "string",
+                        "required": false,
+                        "source": "disabled",
+                        "description": "A list of items the customer is purchasing. Use this parameter to pass one-time or recurring [Prices](https://stripe.com/docs/api/prices).\n\nFor `payment` mode, there is a maximum of 100 line items, however it is recommended to consolidate line items if there are more than a few dozen.\n\nFor `subscription` mode, there is a maximum of 20 line items with recurring Prices and 20 line items with one-time Prices. Line items with one-time Prices will be on the initial invoice only."
+                      }
+                    }
+                  }
+                }
+              },
+              "locale": {
+                "type": "string",
+                "required": false,
+                "source": "disabled",
+                "description": "The IETF language tag of the locale Checkout is displayed in. If blank or `auto`, the browser's locale is used."
+              },
+              "mode": {
+                "type": "string",
+                "required": false,
+                "source": "disabled",
+                "description": "The mode of the Checkout Session. Pass `subscription` if the Checkout Session includes at least one recurring item."
+              },
+              "payment_intent_data": {
+                "type": "object",
+                "required": true,
+                "properties": {
+                  "application_fee_amount": {
+                    "type": "number",
+                    "required": false,
+                    "source": "disabled",
+                    "description": "A subset of parameters to be passed to PaymentIntent creation for Checkout Sessions in `payment` mode."
+                  },
+                  "capture_method": {
+                    "type": "string",
+                    "required": false,
+                    "source": "disabled",
+                    "description": "A subset of parameters to be passed to PaymentIntent creation for Checkout Sessions in `payment` mode."
+                  },
+                  "metadata": {
+                    "type": "object",
+                    "required": false,
+                    "source": "disabled",
+                    "description": "A subset of parameters to be passed to PaymentIntent creation for Checkout Sessions in `payment` mode."
+                  },
+                  "on_behalf_of": {
+                    "type": "string",
+                    "required": false,
+                    "source": "disabled",
+                    "description": "A subset of parameters to be passed to PaymentIntent creation for Checkout Sessions in `payment` mode."
+                  },
+                  "receipt_email": {
+                    "type": "string",
+                    "required": false,
+                    "source": "disabled",
+                    "description": "A subset of parameters to be passed to PaymentIntent creation for Checkout Sessions in `payment` mode."
+                  },
+                  "setup_future_usage": {
+                    "type": "string",
+                    "required": false,
+                    "source": "disabled",
+                    "description": "A subset of parameters to be passed to PaymentIntent creation for Checkout Sessions in `payment` mode."
+                  },
+                  "shipping": {
+                    "type": "object",
+                    "required": true,
+                    "properties": {
+                      "address": {
+                        "type": "object",
+                        "required": true,
+                        "properties": {
+                          "line1": {
+                            "type": "string",
+                            "required": false,
+                            "source": "disabled",
+                            "description": "A subset of parameters to be passed to PaymentIntent creation for Checkout Sessions in `payment` mode."
+                          },
+                          "city": {
+                            "type": "string",
+                            "required": false,
+                            "source": "disabled",
+                            "description": "A subset of parameters to be passed to PaymentIntent creation for Checkout Sessions in `payment` mode."
+                          },
+                          "country": {
+                            "type": "string",
+                            "required": false,
+                            "source": "disabled",
+                            "description": "A subset of parameters to be passed to PaymentIntent creation for Checkout Sessions in `payment` mode."
+                          },
+                          "line2": {
+                            "type": "string",
+                            "required": false,
+                            "source": "disabled",
+                            "description": "A subset of parameters to be passed to PaymentIntent creation for Checkout Sessions in `payment` mode."
+                          },
+                          "postal_code": {
+                            "type": "string",
+                            "required": false,
+                            "source": "disabled",
+                            "description": "A subset of parameters to be passed to PaymentIntent creation for Checkout Sessions in `payment` mode."
+                          },
+                          "state": {
+                            "type": "string",
+                            "required": false,
+                            "source": "disabled",
+                            "description": "A subset of parameters to be passed to PaymentIntent creation for Checkout Sessions in `payment` mode."
+                          }
+                        }
+                      },
+                      "name": {
+                        "type": "string",
+                        "required": false,
+                        "source": "disabled",
+                        "description": "A subset of parameters to be passed to PaymentIntent creation for Checkout Sessions in `payment` mode."
+                      },
+                      "carrier": {
+                        "type": "string",
+                        "required": false,
+                        "source": "disabled",
+                        "description": "A subset of parameters to be passed to PaymentIntent creation for Checkout Sessions in `payment` mode."
+                      },
+                      "phone": {
+                        "type": "string",
+                        "required": false,
+                        "source": "disabled",
+                        "description": "A subset of parameters to be passed to PaymentIntent creation for Checkout Sessions in `payment` mode."
+                      },
+                      "tracking_number": {
+                        "type": "string",
+                        "required": false,
+                        "source": "disabled",
+                        "description": "A subset of parameters to be passed to PaymentIntent creation for Checkout Sessions in `payment` mode."
+                      }
+                    }
+                  },
+                  "statement_descriptor": {
+                    "type": "string",
+                    "required": false,
+                    "source": "disabled",
+                    "description": "A subset of parameters to be passed to PaymentIntent creation for Checkout Sessions in `payment` mode."
+                  },
+                  "statement_descriptor_suffix": {
+                    "type": "string",
+                    "required": false,
+                    "source": "disabled",
+                    "description": "A subset of parameters to be passed to PaymentIntent creation for Checkout Sessions in `payment` mode."
+                  },
+                  "transfer_data": {
+                    "type": "object",
+                    "required": true,
+                    "properties": {
+                      "destination": {
+                        "type": "string",
+                        "required": false,
+                        "source": "disabled",
+                        "description": "A subset of parameters to be passed to PaymentIntent creation for Checkout Sessions in `payment` mode."
+                      },
+                      "amount": {
+                        "type": "number",
+                        "required": false,
+                        "source": "disabled",
+                        "description": "A subset of parameters to be passed to PaymentIntent creation for Checkout Sessions in `payment` mode."
+                      }
+                    }
+                  },
+                  "transfer_group": {
+                    "type": "string",
+                    "required": false,
+                    "source": "disabled",
+                    "description": "A subset of parameters to be passed to PaymentIntent creation for Checkout Sessions in `payment` mode."
+                  }
+                }
+              },
+              "payment_method_collection": {
+                "type": "string",
+                "required": false,
+                "source": "disabled",
+                "description": "Specify whether Checkout should collect a payment method. When set to `if_required`, Checkout will not collect a payment method when the total due for the session is 0.\nThis may occur if the Checkout Session includes a free trial or a discount.\n\nCan only be set in `subscription` mode. Defaults to `always`.\n\nIf you'd like information on how to collect a payment method outside of Checkout, read the guide on configuring [subscriptions with a free trial](https://stripe.com/docs/payments/checkout/free-trials)."
+              },
+              "payment_method_configuration": {
+                "type": "string",
+                "required": false,
+                "source": "disabled",
+                "description": "The ID of the payment method configuration to use with this Checkout session."
+              },
+              "payment_method_options": {
+                "type": "object",
+                "required": true,
+                "properties": {
+                  "acss_debit": {
+                    "type": "object",
+                    "required": true,
+                    "properties": {
+                      "currency": {
+                        "type": "string",
+                        "required": false,
+                        "source": "disabled",
+                        "description": "Payment-method-specific configuration."
+                      },
+                      "mandate_options": {
+                        "type": "object",
+                        "required": true,
+                        "properties": {
+                          "custom_mandate_url": {
+                            "type": "string",
+                            "required": false,
+                            "source": "disabled",
+                            "description": "Payment-method-specific configuration."
+                          },
+                          "default_for": {
+                            "type": "array",
+                            "required": true,
+                            "items": {
+                              "type": "string",
+                              "required": false,
+                              "source": "disabled",
+                              "description": "Payment-method-specific configuration."
+                            }
+                          },
+                          "interval_description": {
+                            "type": "string",
+                            "required": false,
+                            "source": "disabled",
+                            "description": "Payment-method-specific configuration."
+                          },
+                          "payment_schedule": {
+                            "type": "string",
+                            "required": false,
+                            "source": "disabled",
+                            "description": "Payment-method-specific configuration."
+                          },
+                          "transaction_type": {
+                            "type": "string",
+                            "required": false,
+                            "source": "disabled",
+                            "description": "Payment-method-specific configuration."
+                          }
+                        }
+                      },
+                      "setup_future_usage": {
+                        "type": "string",
+                        "required": false,
+                        "source": "disabled",
+                        "description": "Payment-method-specific configuration."
+                      },
+                      "verification_method": {
+                        "type": "string",
+                        "required": false,
+                        "source": "disabled",
+                        "description": "Payment-method-specific configuration."
+                      }
+                    }
+                  },
+                  "affirm": {
+                    "type": "object",
+                    "required": true,
+                    "properties": {
+                      "setup_future_usage": {
+                        "type": "string",
+                        "required": false,
+                        "source": "disabled",
+                        "description": "Payment-method-specific configuration."
+                      }
+                    }
+                  },
+                  "afterpay_clearpay": {
+                    "type": "object",
+                    "required": true,
+                    "properties": {
+                      "setup_future_usage": {
+                        "type": "string",
+                        "required": false,
+                        "source": "disabled",
+                        "description": "Payment-method-specific configuration."
+                      }
+                    }
+                  },
+                  "alipay": {
+                    "type": "object",
+                    "required": true,
+                    "properties": {
+                      "setup_future_usage": {
+                        "type": "string",
+                        "required": false,
+                        "source": "disabled",
+                        "description": "Payment-method-specific configuration."
+                      }
+                    }
+                  },
+                  "amazon_pay": {
+                    "type": "object",
+                    "required": true,
+                    "properties": {
+                      "setup_future_usage": {
+                        "type": "string",
+                        "required": false,
+                        "source": "disabled",
+                        "description": "Payment-method-specific configuration."
+                      }
+                    }
+                  },
+                  "au_becs_debit": {
+                    "type": "object",
+                    "required": true,
+                    "properties": {
+                      "setup_future_usage": {
+                        "type": "string",
+                        "required": false,
+                        "source": "disabled",
+                        "description": "Payment-method-specific configuration."
+                      }
+                    }
+                  },
+                  "bacs_debit": {
+                    "type": "object",
+                    "required": true,
+                    "properties": {
+                      "setup_future_usage": {
+                        "type": "string",
+                        "required": false,
+                        "source": "disabled",
+                        "description": "Payment-method-specific configuration."
+                      }
+                    }
+                  },
+                  "bancontact": {
+                    "type": "object",
+                    "required": true,
+                    "properties": {
+                      "setup_future_usage": {
+                        "type": "string",
+                        "required": false,
+                        "source": "disabled",
+                        "description": "Payment-method-specific configuration."
+                      }
+                    }
+                  },
+                  "boleto": {
+                    "type": "object",
+                    "required": true,
+                    "properties": {
+                      "expires_after_days": {
+                        "type": "number",
+                        "required": false,
+                        "source": "disabled",
+                        "description": "Payment-method-specific configuration."
+                      },
+                      "setup_future_usage": {
+                        "type": "string",
+                        "required": false,
+                        "source": "disabled",
+                        "description": "Payment-method-specific configuration."
+                      }
+                    }
+                  },
+                  "card": {
+                    "type": "object",
+                    "required": true,
+                    "properties": {
+                      "installments": {
+                        "type": "object",
+                        "required": true,
+                        "properties": {
+                          "enabled": {
+                            "type": "boolean",
+                            "required": false,
+                            "source": "disabled",
+                            "description": "Payment-method-specific configuration."
+                          }
+                        }
+                      },
+                      "request_three_d_secure": {
+                        "type": "string",
+                        "required": false,
+                        "source": "disabled",
+                        "description": "Payment-method-specific configuration."
+                      },
+                      "setup_future_usage": {
+                        "type": "string",
+                        "required": false,
+                        "source": "disabled",
+                        "description": "Payment-method-specific configuration."
+                      },
+                      "statement_descriptor_suffix_kana": {
+                        "type": "string",
+                        "required": false,
+                        "source": "disabled",
+                        "description": "Payment-method-specific configuration."
+                      },
+                      "statement_descriptor_suffix_kanji": {
+                        "type": "string",
+                        "required": false,
+                        "source": "disabled",
+                        "description": "Payment-method-specific configuration."
+                      }
+                    }
+                  },
+                  "cashapp": {
+                    "type": "object",
+                    "required": true,
+                    "properties": {
+                      "setup_future_usage": {
+                        "type": "string",
+                        "required": false,
+                        "source": "disabled",
+                        "description": "Payment-method-specific configuration."
+                      }
+                    }
+                  },
+                  "customer_balance": {
+                    "type": "object",
+                    "required": true,
+                    "properties": {
+                      "bank_transfer": {
+                        "type": "object",
+                        "required": true,
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "required": false,
+                            "source": "disabled",
+                            "description": "Payment-method-specific configuration."
+                          },
+                          "eu_bank_transfer": {
+                            "type": "object",
+                            "required": true,
+                            "properties": {
+                              "country": {
+                                "type": "string",
+                                "required": false,
+                                "source": "disabled",
+                                "description": "Payment-method-specific configuration."
+                              }
+                            }
+                          },
+                          "requested_address_types": {
+                            "type": "array",
+                            "required": true,
+                            "items": {
+                              "type": "string",
+                              "required": false,
+                              "source": "disabled",
+                              "description": "Payment-method-specific configuration."
+                            }
+                          }
+                        }
+                      },
+                      "funding_type": {
+                        "type": "string",
+                        "required": false,
+                        "source": "disabled",
+                        "description": "Payment-method-specific configuration."
+                      },
+                      "setup_future_usage": {
+                        "type": "string",
+                        "required": false,
+                        "source": "disabled",
+                        "description": "Payment-method-specific configuration."
+                      }
+                    }
+                  },
+                  "eps": {
+                    "type": "object",
+                    "required": true,
+                    "properties": {
+                      "setup_future_usage": {
+                        "type": "string",
+                        "required": false,
+                        "source": "disabled",
+                        "description": "Payment-method-specific configuration."
+                      }
+                    }
+                  },
+                  "fpx": {
+                    "type": "object",
+                    "required": true,
+                    "properties": {
+                      "setup_future_usage": {
+                        "type": "string",
+                        "required": false,
+                        "source": "disabled",
+                        "description": "Payment-method-specific configuration."
+                      }
+                    }
+                  },
+                  "giropay": {
+                    "type": "object",
+                    "required": true,
+                    "properties": {
+                      "setup_future_usage": {
+                        "type": "string",
+                        "required": false,
+                        "source": "disabled",
+                        "description": "Payment-method-specific configuration."
+                      }
+                    }
+                  },
+                  "grabpay": {
+                    "type": "object",
+                    "required": true,
+                    "properties": {
+                      "setup_future_usage": {
+                        "type": "string",
+                        "required": false,
+                        "source": "disabled",
+                        "description": "Payment-method-specific configuration."
+                      }
+                    }
+                  },
+                  "ideal": {
+                    "type": "object",
+                    "required": true,
+                    "properties": {
+                      "setup_future_usage": {
+                        "type": "string",
+                        "required": false,
+                        "source": "disabled",
+                        "description": "Payment-method-specific configuration."
+                      }
+                    }
+                  },
+                  "klarna": {
+                    "type": "object",
+                    "required": true,
+                    "properties": {
+                      "setup_future_usage": {
+                        "type": "string",
+                        "required": false,
+                        "source": "disabled",
+                        "description": "Payment-method-specific configuration."
+                      }
+                    }
+                  },
+                  "konbini": {
+                    "type": "object",
+                    "required": true,
+                    "properties": {
+                      "expires_after_days": {
+                        "type": "number",
+                        "required": false,
+                        "source": "disabled",
+                        "description": "Payment-method-specific configuration."
+                      },
+                      "setup_future_usage": {
+                        "type": "string",
+                        "required": false,
+                        "source": "disabled",
+                        "description": "Payment-method-specific configuration."
+                      }
+                    }
+                  },
+                  "link": {
+                    "type": "object",
+                    "required": true,
+                    "properties": {
+                      "setup_future_usage": {
+                        "type": "string",
+                        "required": false,
+                        "source": "disabled",
+                        "description": "Payment-method-specific configuration."
+                      }
+                    }
+                  },
+                  "oxxo": {
+                    "type": "object",
+                    "required": true,
+                    "properties": {
+                      "expires_after_days": {
+                        "type": "number",
+                        "required": false,
+                        "source": "disabled",
+                        "description": "Payment-method-specific configuration."
+                      },
+                      "setup_future_usage": {
+                        "type": "string",
+                        "required": false,
+                        "source": "disabled",
+                        "description": "Payment-method-specific configuration."
+                      }
+                    }
+                  },
+                  "p24": {
+                    "type": "object",
+                    "required": true,
+                    "properties": {
+                      "setup_future_usage": {
+                        "type": "string",
+                        "required": false,
+                        "source": "disabled",
+                        "description": "Payment-method-specific configuration."
+                      },
+                      "tos_shown_and_accepted": {
+                        "type": "boolean",
+                        "required": false,
+                        "source": "disabled",
+                        "description": "Payment-method-specific configuration."
+                      }
+                    }
+                  },
+                  "paynow": {
+                    "type": "object",
+                    "required": true,
+                    "properties": {
+                      "setup_future_usage": {
+                        "type": "string",
+                        "required": false,
+                        "source": "disabled",
+                        "description": "Payment-method-specific configuration."
+                      }
+                    }
+                  },
+                  "paypal": {
+                    "type": "object",
+                    "required": true,
+                    "properties": {
+                      "capture_method": {
+                        "type": "string",
+                        "required": false,
+                        "source": "disabled",
+                        "description": "Payment-method-specific configuration."
+                      },
+                      "preferred_locale": {
+                        "type": "string",
+                        "required": false,
+                        "source": "disabled",
+                        "description": "Payment-method-specific configuration."
+                      },
+                      "reference": {
+                        "type": "string",
+                        "required": false,
+                        "source": "disabled",
+                        "description": "Payment-method-specific configuration."
+                      },
+                      "risk_correlation_id": {
+                        "type": "string",
+                        "required": false,
+                        "source": "disabled",
+                        "description": "Payment-method-specific configuration."
+                      },
+                      "setup_future_usage": {
+                        "type": "string",
+                        "required": false,
+                        "source": "disabled",
+                        "description": "Payment-method-specific configuration."
+                      }
+                    }
+                  },
+                  "pix": {
+                    "type": "object",
+                    "required": true,
+                    "properties": {
+                      "expires_after_seconds": {
+                        "type": "number",
+                        "required": false,
+                        "source": "disabled",
+                        "description": "Payment-method-specific configuration."
+                      }
+                    }
+                  },
+                  "revolut_pay": {
+                    "type": "object",
+                    "required": true,
+                    "properties": {
+                      "setup_future_usage": {
+                        "type": "string",
+                        "required": false,
+                        "source": "disabled",
+                        "description": "Payment-method-specific configuration."
+                      }
+                    }
+                  },
+                  "sepa_debit": {
+                    "type": "object",
+                    "required": true,
+                    "properties": {
+                      "setup_future_usage": {
+                        "type": "string",
+                        "required": false,
+                        "source": "disabled",
+                        "description": "Payment-method-specific configuration."
+                      }
+                    }
+                  },
+                  "sofort": {
+                    "type": "object",
+                    "required": true,
+                    "properties": {
+                      "setup_future_usage": {
+                        "type": "string",
+                        "required": false,
+                        "source": "disabled",
+                        "description": "Payment-method-specific configuration."
+                      }
+                    }
+                  },
+                  "swish": {
+                    "type": "object",
+                    "required": true,
+                    "properties": {
+                      "reference": {
+                        "type": "string",
+                        "required": false,
+                        "source": "disabled",
+                        "description": "Payment-method-specific configuration."
+                      }
+                    }
+                  },
+                  "us_bank_account": {
+                    "type": "object",
+                    "required": true,
+                    "properties": {
+                      "financial_connections": {
+                        "type": "object",
+                        "required": true,
+                        "properties": {
+                          "permissions": {
+                            "type": "array",
+                            "required": true,
+                            "items": {
+                              "type": "string",
+                              "required": false,
+                              "source": "disabled",
+                              "description": "Payment-method-specific configuration."
+                            }
+                          },
+                          "prefetch": {
+                            "type": "array",
+                            "required": true,
+                            "items": {
+                              "type": "string",
+                              "required": false,
+                              "source": "disabled",
+                              "description": "Payment-method-specific configuration."
+                            }
+                          }
+                        }
+                      },
+                      "setup_future_usage": {
+                        "type": "string",
+                        "required": false,
+                        "source": "disabled",
+                        "description": "Payment-method-specific configuration."
+                      },
+                      "verification_method": {
+                        "type": "string",
+                        "required": false,
+                        "source": "disabled",
+                        "description": "Payment-method-specific configuration."
+                      }
+                    }
+                  },
+                  "wechat_pay": {
+                    "type": "object",
+                    "required": true,
+                    "properties": {
+                      "client": {
+                        "type": "string",
+                        "required": false,
+                        "source": "disabled",
+                        "description": "Payment-method-specific configuration."
+                      },
+                      "app_id": {
+                        "type": "string",
+                        "required": false,
+                        "source": "disabled",
+                        "description": "Payment-method-specific configuration."
+                      },
+                      "setup_future_usage": {
+                        "type": "string",
+                        "required": false,
+                        "source": "disabled",
+                        "description": "Payment-method-specific configuration."
+                      }
+                    }
+                  }
+                }
+              },
+              "payment_method_types": {
+                "type": "array",
+                "required": true,
+                "items": {
+                  "type": "string",
+                  "required": false,
+                  "source": "disabled",
+                  "description": "A list of the types of payment methods (e.g., `card`) this Checkout Session can accept.\n\nYou can omit this attribute to manage your payment methods from the [Stripe Dashboard](https://dashboard.stripe.com/settings/payment_methods).\nSee [Dynamic Payment Methods](https://stripe.com/docs/payments/payment-methods/integration-options#using-dynamic-payment-methods) for more details.\n\nRead more about the supported payment methods and their requirements in our [payment\nmethod details guide](/docs/payments/checkout/payment-methods).\n\nIf multiple payment methods are passed, Checkout will dynamically reorder them to\nprioritize the most relevant payment methods based on the customer's location and\nother characteristics."
+                }
+              },
+              "phone_number_collection": {
+                "type": "object",
+                "required": true,
+                "properties": {
+                  "enabled": {
+                    "type": "boolean",
+                    "required": false,
+                    "source": "disabled",
+                    "description": "Controls phone number collection settings for the session.\n\nWe recommend that you review your privacy policy and check with your legal contacts\nbefore using this feature. Learn more about [collecting phone numbers with Checkout](https://stripe.com/docs/payments/checkout/phone-numbers)."
+                  }
+                }
+              },
+              "redirect_on_completion": {
+                "type": "string",
+                "required": false,
+                "source": "disabled",
+                "description": "This parameter applies to `ui_mode: embedded`. Learn more about the [redirect behavior](https://stripe.com/docs/payments/checkout/custom-redirect-behavior) of embedded sessions. Defaults to `always`."
+              },
+              "return_url": {
+                "type": "string",
+                "required": false,
+                "source": "disabled",
+                "description": "The URL to redirect your customer back to after they authenticate or cancel their payment on the\npayment method's app or site. This parameter is required if ui_mode is `embedded`\nand redirect-based payment methods are enabled on the session."
+              },
+              "setup_intent_data": {
+                "type": "object",
+                "required": true,
+                "properties": {
+                  "metadata": {
+                    "type": "object",
+                    "required": false,
+                    "source": "disabled",
+                    "description": "A subset of parameters to be passed to SetupIntent creation for Checkout Sessions in `setup` mode."
+                  },
+                  "on_behalf_of": {
+                    "type": "string",
+                    "required": false,
+                    "source": "disabled",
+                    "description": "A subset of parameters to be passed to SetupIntent creation for Checkout Sessions in `setup` mode."
+                  }
+                }
+              },
+              "shipping_address_collection": {
+                "type": "object",
+                "required": true,
+                "properties": {
+                  "allowed_countries": {
+                    "type": "array",
+                    "required": true,
+                    "items": {
+                      "type": "string",
+                      "required": false,
+                      "source": "disabled",
+                      "description": "When set, provides configuration for Checkout to collect a shipping address from a customer."
+                    }
+                  }
+                }
+              },
+              "shipping_options": {
+                "type": "array",
+                "required": true,
+                "items": {
+                  "type": "object",
+                  "required": true,
+                  "properties": {
+                    "shipping_rate": {
+                      "type": "string",
+                      "required": false,
+                      "source": "disabled",
+                      "description": "The shipping rate options to apply to this Session. Up to a maximum of 5."
+                    },
+                    "shipping_rate_data": {
+                      "type": "object",
+                      "required": true,
+                      "properties": {
+                        "display_name": {
+                          "type": "string",
+                          "required": false,
+                          "source": "disabled",
+                          "description": "The shipping rate options to apply to this Session. Up to a maximum of 5."
+                        },
+                        "delivery_estimate": {
+                          "type": "object",
+                          "required": true,
+                          "properties": {
+                            "maximum": {
+                              "type": "object",
+                              "required": true,
+                              "properties": {
+                                "unit": {
+                                  "type": "string",
+                                  "required": false,
+                                  "source": "disabled",
+                                  "description": "The shipping rate options to apply to this Session. Up to a maximum of 5."
+                                },
+                                "value": {
+                                  "type": "number",
+                                  "required": false,
+                                  "source": "disabled",
+                                  "description": "The shipping rate options to apply to this Session. Up to a maximum of 5."
+                                }
+                              }
+                            },
+                            "minimum": {
+                              "type": "object",
+                              "required": true,
+                              "properties": {
+                                "unit": {
+                                  "type": "string",
+                                  "required": false,
+                                  "source": "disabled",
+                                  "description": "The shipping rate options to apply to this Session. Up to a maximum of 5."
+                                },
+                                "value": {
+                                  "type": "number",
+                                  "required": false,
+                                  "source": "disabled",
+                                  "description": "The shipping rate options to apply to this Session. Up to a maximum of 5."
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "fixed_amount": {
+                          "type": "object",
+                          "required": true,
+                          "properties": {
+                            "amount": {
+                              "type": "number",
+                              "required": false,
+                              "source": "disabled",
+                              "description": "The shipping rate options to apply to this Session. Up to a maximum of 5."
+                            },
+                            "currency": {
+                              "type": "string",
+                              "required": false,
+                              "source": "disabled",
+                              "description": "The shipping rate options to apply to this Session. Up to a maximum of 5."
+                            },
+                            "currency_options": {
+                              "type": "object",
+                              "required": false,
+                              "source": "disabled",
+                              "description": "The shipping rate options to apply to this Session. Up to a maximum of 5."
+                            }
+                          }
+                        },
+                        "metadata": {
+                          "type": "object",
+                          "required": false,
+                          "source": "disabled",
+                          "description": "The shipping rate options to apply to this Session. Up to a maximum of 5."
+                        },
+                        "tax_behavior": {
+                          "type": "string",
+                          "required": false,
+                          "source": "disabled",
+                          "description": "The shipping rate options to apply to this Session. Up to a maximum of 5."
+                        },
+                        "tax_code": {
+                          "type": "string",
+                          "required": false,
+                          "source": "disabled",
+                          "description": "The shipping rate options to apply to this Session. Up to a maximum of 5."
+                        },
+                        "type": {
+                          "type": "string",
+                          "required": false,
+                          "source": "disabled",
+                          "description": "The shipping rate options to apply to this Session. Up to a maximum of 5."
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "submit_type": {
+                "type": "string",
+                "required": false,
+                "source": "disabled",
+                "description": "Describes the type of transaction being performed by Checkout in order to customize\nrelevant text on the page, such as the submit button. `submit_type` can only be\nspecified on Checkout Sessions in `payment` mode. If blank or `auto`, `pay` is used."
+              },
+              "subscription_data": {
+                "type": "object",
+                "required": true,
+                "properties": {
+                  "application_fee_percent": {
+                    "type": "number",
+                    "required": false,
+                    "source": "disabled",
+                    "description": "A subset of parameters to be passed to subscription creation for Checkout Sessions in `subscription` mode."
+                  },
+                  "billing_cycle_anchor": {
+                    "type": "string",
+                    "required": false,
+                    "source": "disabled",
+                    "description": "A subset of parameters to be passed to subscription creation for Checkout Sessions in `subscription` mode."
+                  },
+                  "default_tax_rates": {
+                    "type": "array",
+                    "required": true,
+                    "items": {
+                      "type": "string",
+                      "required": false,
+                      "source": "disabled",
+                      "description": "A subset of parameters to be passed to subscription creation for Checkout Sessions in `subscription` mode."
+                    }
+                  },
+                  "invoice_settings": {
+                    "type": "object",
+                    "required": true,
+                    "properties": {
+                      "issuer": {
+                        "type": "object",
+                        "required": true,
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "required": false,
+                            "source": "disabled",
+                            "description": "A subset of parameters to be passed to subscription creation for Checkout Sessions in `subscription` mode."
+                          },
+                          "account": {
+                            "type": "string",
+                            "required": false,
+                            "source": "disabled",
+                            "description": "A subset of parameters to be passed to subscription creation for Checkout Sessions in `subscription` mode."
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "metadata": {
+                    "type": "object",
+                    "required": false,
+                    "source": "disabled",
+                    "description": "A subset of parameters to be passed to subscription creation for Checkout Sessions in `subscription` mode."
+                  },
+                  "on_behalf_of": {
+                    "type": "string",
+                    "required": false,
+                    "source": "disabled",
+                    "description": "A subset of parameters to be passed to subscription creation for Checkout Sessions in `subscription` mode."
+                  },
+                  "proration_behavior": {
+                    "type": "string",
+                    "required": false,
+                    "source": "disabled",
+                    "description": "A subset of parameters to be passed to subscription creation for Checkout Sessions in `subscription` mode."
+                  },
+                  "transfer_data": {
+                    "type": "object",
+                    "required": true,
+                    "properties": {
+                      "destination": {
+                        "type": "string",
+                        "required": false,
+                        "source": "disabled",
+                        "description": "A subset of parameters to be passed to subscription creation for Checkout Sessions in `subscription` mode."
+                      },
+                      "amount_percent": {
+                        "type": "number",
+                        "required": false,
+                        "source": "disabled",
+                        "description": "A subset of parameters to be passed to subscription creation for Checkout Sessions in `subscription` mode."
+                      }
+                    }
+                  },
+                  "trial_end": {
+                    "type": "string",
+                    "required": false,
+                    "source": "disabled",
+                    "description": "A subset of parameters to be passed to subscription creation for Checkout Sessions in `subscription` mode."
+                  },
+                  "trial_period_days": {
+                    "type": "number",
+                    "required": false,
+                    "source": "disabled",
+                    "description": "A subset of parameters to be passed to subscription creation for Checkout Sessions in `subscription` mode."
+                  },
+                  "trial_settings": {
+                    "type": "object",
+                    "required": true,
+                    "properties": {
+                      "end_behavior": {
+                        "type": "object",
+                        "required": true,
+                        "properties": {
+                          "missing_payment_method": {
+                            "type": "string",
+                            "required": false,
+                            "source": "disabled",
+                            "description": "A subset of parameters to be passed to subscription creation for Checkout Sessions in `subscription` mode."
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "success_url": {
+                "type": "string",
+                "required": false,
+                "source": "disabled",
+                "description": "The URL to which Stripe should send customers when payment or setup\nis complete.\nThis parameter is not allowed if ui_mode is `embedded`. If you’d like to use\ninformation from the successful Checkout Session on your page, read the\nguide on [customizing your success page](https://stripe.com/docs/payments/checkout/custom-success-page)."
+              },
+              "tax_id_collection": {
+                "type": "object",
+                "required": true,
+                "properties": {
+                  "enabled": {
+                    "type": "boolean",
+                    "required": false,
+                    "source": "disabled",
+                    "description": "Controls tax ID collection settings for the session."
+                  }
+                }
+              },
+              "ui_mode": {
+                "type": "string",
+                "required": false,
+                "source": "disabled",
+                "description": "The UI mode of the Session. Defaults to `hosted`."
+              }
+            },
+            "enabled": true,
+            "is_default": true,
+            "renewal_mode": "platform",
+            "apply_discount_before_charge": false,
+            "input_mappings": {
+              "mode": {
+                "source": "static",
+                "value": "payment"
+              },
+              "success_url": {
+                "source": "static",
+                "value": "http://localhost:3000"
+              },
+              "cancel_url": {
+                "source": "static",
+                "value": "http://localhost:3000"
+              },
+              "line_items[0].quantity": {
+                "source": "static",
+                "value": "1"
+              },
+              "line_items[0].price_data.unit_amount": {
+                "source": "context",
+                "path": "amount"
+              },
+              "line_items[0].price_data.product_data.name": {
+                "source": "context",
+                "path": "plan.name"
+              },
+              "line_items[0].price_data.currency": {
+                "source": "context",
+                "path": "currency"
+              }
+            },
+            "installation_id": "6a1ef98afda19ba5d283b874"
+          },
+          {
+            "key": "flutterwave",
+            "name": "Flutterwave",
+            "connector_id": "6a285967fe674b23fda49a01",
+            "action_id": "enaira",
+            "connector_name": "Flutterwave v3",
+            "action_name": "enaira",
+            "action_inputs": {
+              "tx_ref": "string",
+              "amount": "string",
+              "currency": "string",
+              "email": "string",
+              "fullname": "string",
+              "phone_number": "string",
+              "redirect_url": "string"
+            },
+            "enabled": true,
+            "is_default": false,
+            "renewal_mode": "platform",
+            "apply_discount_before_charge": true,
+            "input_mappings": {
+              "tx_ref": {
+                "source": "input",
+                "key": "tx_ref"
+              },
+              "amount": {
+                "source": "context",
+                "path": "amount"
+              },
+              "currency": {
+                "source": "context",
+                "path": "currency"
+              },
+              "email": {
+                "source": "context",
+                "path": "customer.email"
+              },
+              "fullname": {
+                "source": "context",
+                "path": "customer.name"
+              },
+              "phone_number": {
+                "source": "input",
+                "key": "phone_number"
+              },
+              "redirect_url": {
+                "source": "input",
+                "key": "redirect_url"
+              }
+            },
+            "installation_id": "6a88d75f7b374fe78996d952"
+          },
+          {
+            "key": "paystack-card",
+            "name": "Paystack Card",
+            "connector_id": "6a1f174b28f02dbef8973d42",
+            "action_id": "Charge Authorization",
+            "connector_name": "Paystack",
+            "action_name": "Charge Authorization",
+            "action_inputs": {
+              "email": {
+                "type": "string",
+                "required": true
+              },
+              "amount": {
+                "type": "string",
+                "required": true
+              },
+              "authorization_code": {
+                "type": "string",
+                "required": true
+              },
+              "reference": {
+                "type": "string",
+                "required": true
+              },
+              "currency": {
+                "type": "string",
+                "required": true
+              },
+              "cart_id": {
+                "type": "string",
+                "required": true
+              },
+              "custom_fields": {
+                "type": "string",
+                "required": true
+              },
+              "split_code": {
+                "type": "string",
+                "required": true
+              },
+              "subaccount": {
+                "type": "string",
+                "required": true
+              },
+              "transaction_charge": {
+                "type": "string",
+                "required": true
+              },
+              "bearer": {
+                "type": "string",
+                "required": true
+              },
+              "queue": {
+                "type": "string",
+                "required": true
+              }
+            },
+            "enabled": true,
+            "is_default": false,
+            "renewal_mode": "provider",
+            "apply_discount_before_charge": false,
+            "input_mappings": {
+              "email": {
+                "source": "context",
+                "path": "customer.email"
+              },
+              "amount": {
+                "source": "context",
+                "path": "amount"
+              },
+              "authorization_code": {
+                "source": "context",
+                "path": "card.token"
+              },
+              "currency": {
+                "source": "context",
+                "path": "currency"
+              }
+            },
+            "installation_id": "6a1f17ae28f02dbef8973ef5"
+          },
+          {
+            "key": "palmpay",
+            "name": "Palmpay",
+            "connector_id": "6a92cdbd2f522f61f2b177ad",
+            "action_id": "Create Checkout",
+            "connector_name": "PalmPay",
+            "action_name": "Create Checkout",
+            "action_inputs": {
+              "requestTime": {
+                "type": "integer",
+                "required": true,
+                "source": "inferred"
+              },
+              "version": {
+                "type": "string",
+                "required": true
+              },
+              "nonceStr": {
+                "type": "string",
+                "required": true
+              },
+              "amount": {
+                "type": "integer",
+                "required": true,
+                "source": "inferred"
+              },
+              "notifyUrl": {
+                "type": "string",
+                "required": true
+              },
+              "orderId": {
+                "type": "string",
+                "required": true
+              },
+              "title": {
+                "type": "string",
+                "required": true
+              },
+              "description": {
+                "type": "string",
+                "required": true
+              },
+              "currency": {
+                "type": "string",
+                "required": true
+              },
+              "callBackUrl": {
+                "type": "string",
+                "required": true
+              },
+              "goodsDetails": {
+                "type": "array",
+                "required": true,
+                "items": {
+                  "type": "object",
+                  "required": true,
+                  "properties": {
+                    "goodsId": {
+                      "type": "string",
+                      "required": true
+                    }
+                  }
+                }
+              },
+              "customerInfo": {
+                "type": "object",
+                "required": true,
+                "properties": {
+                  "userId": {
+                    "type": "string",
+                    "required": true
+                  },
+                  "userName": {
+                    "type": "string",
+                    "required": true
+                  },
+                  "phone": {
+                    "type": "string",
+                    "required": true
+                  },
+                  "email": {
+                    "type": "string",
+                    "required": true
+                  }
+                }
+              },
+              "remark": {
+                "type": "string",
+                "required": true
+              },
+              "splitDetail": {
+                "type": "object",
+                "required": true,
+                "properties": {
+                  "isSplit": {
+                    "type": "boolean",
+                    "required": true,
+                    "source": "inferred"
+                  },
+                  "splitAmountType": {
+                    "type": "integer",
+                    "required": true,
+                    "source": "inferred"
+                  },
+                  "splitFeeType": {
+                    "type": "integer",
+                    "required": true,
+                    "source": "inferred"
+                  },
+                  "splitMerchantList": {
+                    "type": "array",
+                    "required": true,
+                    "items": {
+                      "type": "object",
+                      "required": true,
+                      "properties": {
+                        "splitMerchantId": {
+                          "type": "string",
+                          "required": true
+                        },
+                        "splitAmount": {
+                          "type": "integer",
+                          "required": true,
+                          "source": "inferred"
+                        },
+                        "remark": {
+                          "type": "string",
+                          "required": true
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "enabled": true,
+            "is_default": false,
+            "renewal_mode": "platform",
+            "apply_discount_before_charge": true,
+            "input_mappings": {
+              "amount": {
+                "source": "context",
+                "path": "amount"
+              },
+              "notifyUrl": {
+                "source": "input",
+                "key": "notifyUrl"
+              },
+              "orderId": {
+                "source": "input",
+                "key": "orderId"
+              },
+              "title": {
+                "source": "input",
+                "key": "title"
+              },
+              "description": {
+                "source": "input",
+                "key": "description"
+              },
+              "currency": {
+                "source": "context",
+                "path": "currency"
+              },
+              "callBackUrl": {
+                "source": "input",
+                "key": "callBackUrl"
+              },
+              "customerInfo.phone": {
+                "source": "input",
+                "key": "customer"
+              }
+            },
+            "installation_id": "6a92da685c0a459f3fcc3314"
+          }
+        ],
+        "payment_providers": []
       }
     },
     {
@@ -248473,7 +250702,60 @@
         "plans": [],
         "addons": [],
         "discounts": [],
-        "tax_rates": []
+        "tax_rates": [],
+        "destinations": [
+          {
+            "name": "cr",
+            "channel": "webhook_app",
+            "event_types": [
+              "account.opened"
+            ],
+            "target": {
+              "webhook_app_id": "wh_app_6a989f4698516da91434fb20",
+              "endpoint_id": "wh_ep_6a98a0fa98516da91434fdb3"
+            },
+            "status": "active"
+          },
+          {
+            "name": "Open Account Wkf",
+            "channel": "workflow",
+            "event_types": [
+              "account.opened"
+            ],
+            "target": {
+              "workflow_id": "6a958493019d2fe38b5fb5e4_trigger-3-1788183424927",
+              "workflow_group_id": "6a958493019d2fe38b5fb5e4",
+              "trigger_id": "trigger-3-1788183424927",
+              "environment": "dev"
+            },
+            "status": "inactive"
+          },
+          {
+            "name": "Transaction Publisher",
+            "channel": "event_app",
+            "event_types": [
+              "wallet.credited",
+              "wallet.settled"
+            ],
+            "target": {
+              "event_app_id": "evt_app_6a958080019d2fe38b5fb3c8"
+            },
+            "status": "active"
+          },
+          {
+            "name": "On Reversal",
+            "channel": "webhook",
+            "event_types": [
+              "wallet.reversed"
+            ],
+            "target": {
+              "url": "https://webhook.site/33b8ffdd-9ce3-4a3b-8894-692a7364ec6b"
+            },
+            "status": "active"
+          }
+        ],
+        "payment_methods": [],
+        "payment_providers": []
       }
     },
     {
@@ -248492,33 +250774,296 @@
       "catalog": {
         "events": [
           {
+            "source_id": "evt_def_6a958293019d2fe38b5fb537",
             "name": "account.opened",
             "delivery_profile": "reliable",
             "status": "active"
           },
           {
+            "source_id": "evt_def_6a9a90adbdadceadb00b0573",
             "name": "wallet.credited",
             "description": "Commercial lifecycle wallet.credited",
             "delivery_profile": "reliable",
             "status": "active"
           },
           {
+            "source_id": "evt_def_6a9a90adbdadceadb00b0574",
             "name": "wallet.settled",
             "description": "Commercial lifecycle wallet.settled",
             "delivery_profile": "reliable",
             "status": "active"
           },
           {
+            "source_id": "evt_def_6a9c2690fff090d8b9ef0654",
             "name": "wallet.create",
             "delivery_profile": "reliable",
             "status": "active"
           },
           {
+            "source_id": "evt_def_6a9c97f50d10a4654a1183f8",
             "name": "kyc.submitted",
             "delivery_profile": "reliable",
             "status": "active"
           }
-        ]
+        ],
+        "subscribers": [
+          {
+            "name": "Create Acc",
+            "channel": "workflow",
+            "event_names": [
+              "account.opened"
+            ],
+            "event_ids": [
+              "evt_def_6a958293019d2fe38b5fb537"
+            ],
+            "target": {
+              "workflow_id": "6a958493019d2fe38b5fb5e4_trigger-3-1788183424927",
+              "workflow_group_id": "6a958493019d2fe38b5fb5e4",
+              "trigger_id": "trigger-3-1788183424927",
+              "environment": "dev"
+            },
+            "status": "active"
+          },
+          {
+            "name": "bluupay-wallet-notifications",
+            "channel": "sdk",
+            "event_names": [
+              "wallet.credited",
+              "wallet.settled"
+            ],
+            "event_ids": [
+              "evt_def_6a9a90adbdadceadb00b0573",
+              "evt_def_6a9a90adbdadceadb00b0574"
+            ],
+            "status": "active"
+          },
+          {
+            "name": "bluupay-wallet-notifications",
+            "channel": "sdk",
+            "event_names": [
+              "wallet.credited",
+              "wallet.settled"
+            ],
+            "event_ids": [
+              "evt_def_6a9a90adbdadceadb00b0573",
+              "evt_def_6a9a90adbdadceadb00b0574"
+            ],
+            "status": "active"
+          },
+          {
+            "name": "bluupay-wallet-notifications",
+            "channel": "sdk",
+            "event_names": [
+              "wallet.credited",
+              "wallet.settled"
+            ],
+            "event_ids": [
+              "evt_def_6a9a90adbdadceadb00b0573",
+              "evt_def_6a9a90adbdadceadb00b0574"
+            ],
+            "status": "active"
+          },
+          {
+            "name": "bluupay-wallet-notifications",
+            "channel": "sdk",
+            "event_names": [
+              "wallet.credited",
+              "wallet.settled"
+            ],
+            "event_ids": [
+              "evt_def_6a9a90adbdadceadb00b0573",
+              "evt_def_6a9a90adbdadceadb00b0574"
+            ],
+            "status": "active"
+          },
+          {
+            "name": "bluupay-wallet-notifications",
+            "channel": "sdk",
+            "event_names": [
+              "wallet.credited",
+              "wallet.settled"
+            ],
+            "event_ids": [
+              "evt_def_6a9a90adbdadceadb00b0573",
+              "evt_def_6a9a90adbdadceadb00b0574"
+            ],
+            "status": "active"
+          },
+          {
+            "name": "bluupay-wallet-notifications",
+            "channel": "sdk",
+            "event_names": [
+              "wallet.credited",
+              "wallet.settled"
+            ],
+            "event_ids": [
+              "evt_def_6a9a90adbdadceadb00b0573",
+              "evt_def_6a9a90adbdadceadb00b0574"
+            ],
+            "status": "active"
+          },
+          {
+            "name": "bluupay-wallet-notifications",
+            "channel": "sdk",
+            "event_names": [
+              "wallet.credited",
+              "wallet.settled"
+            ],
+            "event_ids": [
+              "evt_def_6a9a90adbdadceadb00b0573",
+              "evt_def_6a9a90adbdadceadb00b0574"
+            ],
+            "status": "active"
+          },
+          {
+            "name": "bluupay-wallet-notifications",
+            "channel": "sdk",
+            "event_names": [
+              "wallet.credited",
+              "wallet.settled"
+            ],
+            "event_ids": [
+              "evt_def_6a9a90adbdadceadb00b0573",
+              "evt_def_6a9a90adbdadceadb00b0574"
+            ],
+            "status": "active"
+          },
+          {
+            "name": "bluupay-wallet-notifications",
+            "channel": "sdk",
+            "event_names": [
+              "wallet.credited",
+              "wallet.settled"
+            ],
+            "event_ids": [
+              "evt_def_6a9a90adbdadceadb00b0573",
+              "evt_def_6a9a90adbdadceadb00b0574"
+            ],
+            "status": "active"
+          },
+          {
+            "name": "bluupay-wallet-notifications",
+            "channel": "sdk",
+            "event_names": [
+              "wallet.credited",
+              "wallet.settled"
+            ],
+            "event_ids": [
+              "evt_def_6a9a90adbdadceadb00b0573",
+              "evt_def_6a9a90adbdadceadb00b0574"
+            ],
+            "status": "active"
+          },
+          {
+            "name": "bluupay-wallet-notifications",
+            "channel": "sdk",
+            "event_names": [
+              "wallet.credited",
+              "wallet.settled"
+            ],
+            "event_ids": [
+              "evt_def_6a9a90adbdadceadb00b0573",
+              "evt_def_6a9a90adbdadceadb00b0574"
+            ],
+            "status": "active"
+          },
+          {
+            "name": "bluupay-wallet-notifications",
+            "channel": "sdk",
+            "event_names": [
+              "wallet.credited",
+              "wallet.settled"
+            ],
+            "event_ids": [
+              "evt_def_6a9a90adbdadceadb00b0573",
+              "evt_def_6a9a90adbdadceadb00b0574"
+            ],
+            "status": "active"
+          },
+          {
+            "name": "bluupay-wallet-notifications",
+            "channel": "sdk",
+            "event_names": [
+              "wallet.credited",
+              "wallet.settled"
+            ],
+            "event_ids": [
+              "evt_def_6a9a90adbdadceadb00b0573",
+              "evt_def_6a9a90adbdadceadb00b0574"
+            ],
+            "status": "active"
+          },
+          {
+            "name": "bluupay-wallet-notifications",
+            "channel": "sdk",
+            "event_names": [
+              "wallet.credited",
+              "wallet.settled"
+            ],
+            "event_ids": [
+              "evt_def_6a9a90adbdadceadb00b0573",
+              "evt_def_6a9a90adbdadceadb00b0574"
+            ],
+            "status": "active"
+          },
+          {
+            "name": "bluupay-wallet-notifications",
+            "channel": "sdk",
+            "event_names": [
+              "wallet.credited",
+              "wallet.settled"
+            ],
+            "event_ids": [
+              "evt_def_6a9a90adbdadceadb00b0573",
+              "evt_def_6a9a90adbdadceadb00b0574"
+            ],
+            "status": "active"
+          },
+          {
+            "name": "bluupay-wallet-notifications",
+            "channel": "sdk",
+            "event_names": [
+              "wallet.credited",
+              "wallet.settled"
+            ],
+            "event_ids": [
+              "evt_def_6a9a90adbdadceadb00b0573",
+              "evt_def_6a9a90adbdadceadb00b0574"
+            ],
+            "status": "active"
+          },
+          {
+            "name": "bluupay-wallet-notifications",
+            "channel": "sdk",
+            "event_names": [
+              "wallet.credited",
+              "wallet.settled"
+            ],
+            "event_ids": [
+              "evt_def_6a9a90adbdadceadb00b0573",
+              "evt_def_6a9a90adbdadceadb00b0574"
+            ],
+            "status": "active"
+          }
+        ],
+        "publishers": [
+          {
+            "name": "SDK",
+            "source_type": "sdk",
+            "allowed_event_names": [
+              "wallet.credited",
+              "wallet.settled",
+              "account.opened"
+            ],
+            "allowed_event_ids": [
+              "evt_def_6a9a90adbdadceadb00b0573",
+              "evt_def_6a9a90adbdadceadb00b0574",
+              "evt_def_6a958293019d2fe38b5fb537"
+            ],
+            "status": "active"
+          }
+        ],
+        "permissions": []
       }
     },
     {
@@ -248706,7 +251251,7 @@
               "read",
               "manage"
             ],
-            "linked_at": {},
+            "linked_at": "2026-08-01T13:40:51.502Z",
             "linked_by": "69bb9e6e37566079537222a4"
           },
           {
@@ -248719,7 +251264,7 @@
               "read",
               "manage"
             ],
-            "linked_at": {},
+            "linked_at": "2026-08-06T01:13:07.871Z",
             "linked_by": "69bb9e6e37566079537222a4"
           },
           {
@@ -248731,7 +251276,7 @@
               "read",
               "manage"
             ],
-            "linked_at": {},
+            "linked_at": "2026-08-06T12:03:41.603Z",
             "linked_by": "69bb9e6e37566079537222a4"
           }
         ],
@@ -249074,7 +251619,7 @@
               "read",
               "manage"
             ],
-            "linked_at": {},
+            "linked_at": "2026-08-06T17:22:48.393Z",
             "linked_by": "69bb9e6e37566079537222a4"
           },
           {
@@ -249087,7 +251632,7 @@
               "read",
               "manage"
             ],
-            "linked_at": {},
+            "linked_at": "2026-08-06T17:23:43.991Z",
             "linked_by": "69bb9e6e37566079537222a4"
           },
           {
@@ -249100,7 +251645,7 @@
               "read",
               "manage"
             ],
-            "linked_at": {},
+            "linked_at": "2026-08-06T17:24:19.370Z",
             "linked_by": "69bb9e6e37566079537222a4"
           },
           {
@@ -249112,7 +251657,7 @@
               "search",
               "manage"
             ],
-            "linked_at": {},
+            "linked_at": "2026-08-07T09:50:11.521Z",
             "linked_by": "69bb9e6e37566079537222a4"
           },
           {
@@ -249143,7 +251688,7 @@
               "units",
               "exchange"
             ],
-            "linked_at": {},
+            "linked_at": "2026-08-10T15:52:36.106Z",
             "linked_by": "69bb9e6e37566079537222a4"
           },
           {
@@ -249156,7 +251701,7 @@
               "read",
               "manage"
             ],
-            "linked_at": {},
+            "linked_at": "2026-08-12T08:21:56.451Z",
             "linked_by": "69bb9e6e37566079537222a4"
           },
           {
@@ -249169,7 +251714,7 @@
               "read",
               "manage"
             ],
-            "linked_at": {},
+            "linked_at": "2026-08-16T21:21:46.041Z",
             "linked_by": "69bb9e6e37566079537222a4"
           },
           {
@@ -249181,12 +251726,12 @@
               "read",
               "manage"
             ],
-            "linked_at": {},
+            "linked_at": "2026-08-22T23:22:54.047Z",
             "linked_by": "69bb9e6e37566079537222a4"
           }
         ],
         "__v": 0,
-        "jwt_signing_secret_previous_expires_at": {},
+        "jwt_signing_secret_previous_expires_at": "2026-08-21T21:47:34.686Z",
         "project_id": "69d663cefef44ab5d72c7fc4"
       }
     },
@@ -249333,7 +251878,7 @@
               "read",
               "manage"
             ],
-            "linked_at": {},
+            "linked_at": "2026-08-06T17:23:05.192Z",
             "linked_by": "69bb9e6e37566079537222a4"
           }
         ],
@@ -249554,7 +252099,7 @@
               "read",
               "manage"
             ],
-            "linked_at": {},
+            "linked_at": "2026-08-17T13:30:33.408Z",
             "linked_by": "69bb9e6e37566079537222a4"
           },
           {
@@ -249567,7 +252112,7 @@
               "read",
               "manage"
             ],
-            "linked_at": {},
+            "linked_at": "2026-08-31T13:26:58.254Z",
             "linked_by": "69bb9e6e37566079537222a4"
           },
           {
@@ -249580,7 +252125,7 @@
               "read",
               "manage"
             ],
-            "linked_at": {},
+            "linked_at": "2026-09-02T20:19:47.795Z",
             "linked_by": "69bb9e6e37566079537222a4"
           },
           {
@@ -249592,7 +252137,7 @@
               "read",
               "manage"
             ],
-            "linked_at": {},
+            "linked_at": "2026-09-05T09:36:04.503Z",
             "linked_by": "69bb9e6e37566079537222a4"
           },
           {
@@ -249623,7 +252168,7 @@
               "exchange",
               "manage"
             ],
-            "linked_at": {},
+            "linked_at": "2026-09-09T20:47:40.708Z",
             "linked_by": "69bb9e6e37566079537222a4"
           },
           {
@@ -249635,7 +252180,7 @@
               "read",
               "manage"
             ],
-            "linked_at": {},
+            "linked_at": "2026-09-15T15:38:28.856Z",
             "linked_by": "69bb9e6e37566079537222a4"
           }
         ],
@@ -249682,7 +252227,8 @@
                     },
                     "errors": []
                   }
-                ]
+                ],
+                "bindings": []
               },
               {
                 "key": "intiate_payment",
@@ -249745,7 +252291,119 @@
                     "async": false,
                     "idempotency_required": false
                   }
-                ]
+                ],
+                "bindings": [
+                  {
+                    "provider": "paystack",
+                    "connector_id": "6a1f174b28f02dbef8973d42",
+                    "installation_id": "6a1f17ae28f02dbef8973ef5",
+                    "action": "Initialize Transaction",
+                    "request_map": {
+                      "rules": [
+                        {
+                          "from": "input.email",
+                          "to": "email"
+                        },
+                        {
+                          "from": "input.amount",
+                          "to": "amount"
+                        },
+                        {
+                          "from": "input.currency",
+                          "to": "currency"
+                        },
+                        {
+                          "from": "input.ref",
+                          "to": "reference"
+                        },
+                        {
+                          "from": "input.callback",
+                          "to": "callback_url"
+                        }
+                      ],
+                      "template": {
+                        "email": "{{input.email}}",
+                        "amount": "{{input.amount}}",
+                        "currency": "{{input.currency}}",
+                        "reference": "{{input.ref}}",
+                        "callback_url": "{{input.callback}}"
+                      }
+                    },
+                    "response_map": {
+                      "rules": [
+                        {
+                          "from": "data.authorization_url",
+                          "to": "url"
+                        },
+                        {
+                          "from": "data.reference",
+                          "to": "reference"
+                        }
+                      ],
+                      "template": {
+                        "url": "{{data.authorization_url}}",
+                        "reference": "{{data.reference}}"
+                      }
+                    },
+                    "error_map": [],
+                    "status": "active"
+                  },
+                  {
+                    "provider": "palmpay",
+                    "connector_id": "palmpay.com",
+                    "installation_id": "6a9fb30989e265e4bf4810e7",
+                    "action": "Create order",
+                    "request_map": {
+                      "rules": [
+                        {
+                          "from": "input.ref",
+                          "to": "orderId"
+                        },
+                        {
+                          "from": "input.amount",
+                          "to": "amount"
+                        },
+                        {
+                          "from": "input.currency",
+                          "to": "currency"
+                        },
+                        {
+                          "from": "input.callback",
+                          "to": "callBackUrl"
+                        }
+                      ],
+                      "template": {
+                        "orderId": "{{input.ref}}",
+                        "amount": "{{input.amount}}",
+                        "currency": "{{input.currency}}",
+                        "callBackUrl": "{{input.callback}}"
+                      }
+                    },
+                    "response_map": {
+                      "rules": [
+                        {
+                          "from": "data.checkoutUrl",
+                          "to": "url"
+                        },
+                        {
+                          "from": "data.orderNo",
+                          "to": "reference"
+                        }
+                      ],
+                      "template": {
+                        "url": "{{data.checkoutUrl}}",
+                        "reference": "{{data.orderNo}}"
+                      }
+                    },
+                    "error_map": [],
+                    "status": "active"
+                  }
+                ],
+                "routing": {
+                  "default_provider": "palmpay",
+                  "fallback": [],
+                  "pin_allowed": true
+                }
               }
             ]
           },
@@ -249812,7 +252470,8 @@
                     "async": false,
                     "idempotency_required": false
                   }
-                ]
+                ],
+                "bindings": []
               }
             ]
           }
